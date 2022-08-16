@@ -21,12 +21,18 @@ const LoginPage = () => (
                         {() => (
                             <Form className="col-12 col-md-6 mt-3 mt-mb-0">
                                 <h1 className="text-center mb-4">Войти</h1>
-                                <Field type='name' name='login' placeholder="Ваш ник" className="form-floating mb-4"/>
-                                <Field type='password' name='password' placeholder="Пароль" />
-                                <button type='submit'>Войти</button>
+                                <Field type='name' name='login' placeholder="Ваш ник" className="form-floating mb-4 form-control"/>
+                                <Field type='password' name='password' placeholder="Пароль" className="form-floating mb-4 form-control"/>
+                                <button type='submit' className="w-100 mb-3 btn btn-outline-primary">Войти</button>
                             </Form>)
                         }
                         </Formik>
+                    </div>
+                    <div className="card-footer p-4">
+                        <div className="text-center">
+                            <span>Нет аккаунта?</span>
+                            <a href="#">Регистрация</a>
+                        </div>
                     </div>
                 </div>
 
