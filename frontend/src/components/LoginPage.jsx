@@ -30,7 +30,7 @@ const LoginPage = () => (
                     </div>
                     <div className="card-footer p-4">
                         <div className="text-center">
-                            <span>Нет аккаунта?</span>
+                            <span>Нет аккаунта? </span>
                             <a href="#">Регистрация</a>
                         </div>
                     </div>
