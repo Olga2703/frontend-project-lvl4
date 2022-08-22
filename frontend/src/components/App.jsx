@@ -1,21 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  Outlet,
+} from 'react-router-dom';
 import Header from './Header.jsx';
 import LoginPage from './LoginPage.jsx';
 import NotFoundPage from './NotFoundPage.jsx';
+import PrivatePage from './PrivatePage.jsx';
+import routes from '../routes.js';
+import { AuthContext } from '../context/index.js';
+import useAuth from '../hooks/index.js';
+
+const AuthProvider = ({ children }) => {
+  const currentUser = JSON.parse(localStorage.getItem('userId'));
+  const [user, setUser] = useState(currentUser ? { username: currentUser.username } : null);
+
+  const logIn = (userData) => {
+    localStorage.setItem('userId', JSON.stringify(userData));
+    setUser({ username: userData.username });
+  };
+  const logOut = () => {
+    localStorage.removeItem('userId');
+    setUser(null);
+  };
+
+  const getAuthHeader = () => {
+    const userData = JSON.parse(localStorage.getItem('userId'));
+
+    return userData?.token ? { Authorization: `Bearer ${userData.token}` } : {};
+  };
+
+  return (
+    <AuthContext.Provider value={{
+      logIn, logOut, getAuthHeader, user,
+    }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+const PrivateOutlet = () => {
+  const auth = useAuth();
+  return auth.user ? <Outlet /> : <Navigate to={routes.loginPagePath()} />;
+};
 
 const App = () => (
-  <Router>
-    <div className="d-flex flex-column h-100">
-      <Header />
-      <Routes>
-        <Route path='/' />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='*' element={<NotFoundPage />} />
-      </Routes>
-    </div>
-  </Router>
+  <AuthProvider>
+    <Router>
+      <div className="d-flex flex-column h-100">
+        <Header />
+        <Routes>
+          <Route path={routes.chatPagePath()} element={ <PrivateOutlet /> }>
+            <Route path="" element={<PrivatePage />} />
+          </Route>
+          <Route path={routes.loginPagePath()} element={<LoginPage />} />
+          <Route path='*' element={<NotFoundPage />} />
+        </Routes>
+      </div>
+    </Router>
+  </AuthProvider>
+
 );
 
 export default App;
