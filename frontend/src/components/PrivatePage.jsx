@@ -9,6 +9,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchChannels, selectors } from '../slices/channelsSlice.js';
 import ChannelButton from './ChannelButtons.jsx';
+import MessagesForm from './MessagesForm.jsx';
 
 const PrivatePage = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,8 @@ const PrivatePage = () => {
     dispatch(fetchChannels());
   }, [dispatch]);
   const channels = useSelector(selectors.selectAll);
+  const { currentChannelId } = useSelector((state) => state.channels);
+  //   const currentChannel = useSelector((state) => selectors.selectById(state, currentChannelId));
 
   return (
     <Container className="h-100 my-4 overflow-hidden rounded shadow">
@@ -41,10 +44,21 @@ const PrivatePage = () => {
                 </Nav>
             </Col>
             <Col className="p-0 h-100">
-                <div className="bg-light mb-4 p-3 shadow-sm small">
+                <div className="d-flex flex-column h-100">
+                    <div className="bg-light mb-4 p-3 shadow-sm small">
+                        <p className="m-0">
+                            <b># {channels.filter((channel) => channel.id === currentChannelId).map((channel) => channel.name).join('')}</b>
+                        </p>
+                        <span className="text-muted">
+                            count message
+                        </span>
+                    </div>
+                    <div id="messages-box" className="chat-messages overflow-auto px-5"></div>
                 </div>
-                <div id="messages-box" className="chat-messages overflow-auto px-5"></div>
-                <div className="mt-auto px-5 py-3"></div>
+
+                <div className="mt-auto px-5 py-3">
+                    <MessagesForm />
+                </div>
             </Col>
         </Row>
     </Container>
