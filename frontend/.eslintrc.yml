@@ -14,6 +14,7 @@ parserOptions:
   sourceType: module
 plugins:
   - react
+  - functional
 rules:
   import/extensions: 0
   no-console: 0
