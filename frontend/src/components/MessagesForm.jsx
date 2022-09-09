@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useContext } from 'react';
 import { Button } from 'react-bootstrap';
 import { Formik } from 'formik';
-import { ApiContext } from '../context/index.js';
 import { useSelector } from 'react-redux';
+import { ApiContext } from '../context/index.js';
 
 const Messages = () => {
   const inputRef = useRef();
@@ -28,7 +28,7 @@ const Messages = () => {
       }}>
       {(formik) => (
         <form onSubmit={formik.handleSubmit} className='py-1 border rounded-2'>
-          <div className='input-group'>
+          <div className='input-group has-validation'>
             <input
               ref={inputRef}
               name='body'

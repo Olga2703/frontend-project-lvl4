@@ -20,7 +20,8 @@ const PrivatePage = () => {
   //   const curreurrentChannel = useSelector((state) => selectors.selectById(state, currentChannelId));
 
   return (
-    <Container className='h-100 my-4 overflow-hidden rounded shadow'>
+    <div className="d-flex flex-column h-100">
+      <Container className='h-100 my-4 overflow-hidden rounded shadow'>
       <Row className='h-100 bg-white flex-md-row'>
         <Col xs={4} md={2} className='border-end pt-5 px-0 bg-light'>
           <div className='d-flex justify-content-between mb-2 ps-4 pe-2'>
@@ -64,14 +65,16 @@ const PrivatePage = () => {
                 </div>
               ))}
             </div>
+            <div className='mt-auto px-5 py-3'>
+              <MessagesForm />
+            </div>
           </div>
 
-          <div className='mt-auto px-5 py-3'>
-            <MessagesForm />
-          </div>
+
         </Col>
       </Row>
     </Container>
+    </div>
   );
 };
 
