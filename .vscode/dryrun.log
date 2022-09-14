@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 make.exe --dry-run --always-make --keep-going --print-directory
 "\\wsl$\Ubuntu\home\olga_petrenko\frontend-project-lvl4"
 �������� ���� �� �ᯮ�짮��� �� ����᪥ CMD.EXE � ����⢥ ⥪�饩 �����.
@@ -5,3 +6,10 @@ CMD.EXE �� �����ন���� ��� UNC. �� 㬮�砭�
 "make.exe" �� ���� ����७��� ��� ���譥�
 ��������, �ᯮ��塞�� �ணࠬ��� ��� ������ 䠩���.
 
+=======
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/olga/hexlet/frontend-project-lvl4'
+make -C frontend start
+make: Leaving directory '/home/olga/hexlet/frontend-project-lvl4'
+ 
+>>>>>>> Stashed changes
