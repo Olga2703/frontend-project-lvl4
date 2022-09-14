@@ -15,7 +15,7 @@ const PrivatePage = () => {
   const channels = useSelector(selectors.selectAll);
   const messages = useSelector(messagesSelectors.selectAll);
   const { currentChannelId } = useSelector((state) => state.channels);
-  const currentMessages = messages.filter((message) => message.channelId === currentChannelId)
+  const currentMessages = messages.filter((message) => message.channelId === currentChannelId);
 
   //   const curreurrentChannel = useSelector((state) => selectors.selectById(state, currentChannelId));
 
@@ -69,8 +69,6 @@ const PrivatePage = () => {
               <MessagesForm />
             </div>
           </div>
-
-
         </Col>
       </Row>
     </Container>

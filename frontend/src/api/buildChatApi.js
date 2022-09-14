@@ -3,7 +3,7 @@ const buildChatApi = (socket) => {
     socket.emit('newMessage', newMessage, (response) => {
       console.log(response);
       if (response.status !== 'ok') {
-        throw new Error('Network error: mtssage delivery failed');
+        throw new Error('Network error: message delivery failed');
       }
     });
   };

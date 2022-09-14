@@ -9,6 +9,7 @@ const Messages = () => {
   const chatApi = useContext(ApiContext);
   useEffect(() => inputRef.current.focus());
   const channelId = useSelector((state) => state.channels.currentChannelId);
+  console.log(channelId);
   return (
     <Formik
       initialValues={{
@@ -17,7 +18,7 @@ const Messages = () => {
       onSubmit={(values, actions) => {
         const { username } = JSON.parse(localStorage.getItem('user'));
         console.log(values);
-        const message = {...values, channelId, username };
+        const message = { ...values, channelId, username };
         try {
           chatApi.sendMessage(message);
         } catch (err) {
