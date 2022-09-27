@@ -1,11 +1,9 @@
 import { createAsyncThunk, createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import axios from 'axios';
 import routes from '../routes.js';
-import { useAuth } from '../hooks/index.js';
 
-export const fetchChannels = createAsyncThunk('channels/fetchChannels', async () => {
-  const auth = useAuth();
-  const response = await axios.get(routes.dataPath(), { headers: auth.getAuthHeader() });
+export const fetchChannels = createAsyncThunk('channels/fetchChannels', async (header) => {
+  const response = await axios.get(routes.dataPath(), { headers: header });
   return response.data;
 });
 

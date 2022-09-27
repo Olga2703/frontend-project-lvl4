@@ -1,23 +1,30 @@
 import React, { useEffect } from 'react';
-import { Container, Row, Col, Button, Nav } from 'react-bootstrap';
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Nav,
+} from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchChannels, selectors } from '../slices/channelsSlice.js';
 import ChannelButton from './ChannelButtons.jsx';
 import MessagesForm from './MessagesForm.jsx';
 import { selectors as messagesSelectors } from '../slices/messagesSlice.js';
+import { useAuth } from '../hooks/index.js';
 
 const PrivatePage = () => {
   const dispatch = useDispatch();
-  dispatch(fetchChannels());
+  const auth = useAuth();
+  const header = auth.getAuthHeader();
   useEffect(() => {
-    dispatch(fetchChannels());
-  }, [dispatch]);
+    dispatch(fetchChannels(header));
+  }, []);
+
   const channels = useSelector(selectors.selectAll);
   const messages = useSelector(messagesSelectors.selectAll);
   const { currentChannelId } = useSelector((state) => state.channels);
   const currentMessages = messages.filter((message) => message.channelId === currentChannelId);
-
-  //   const curreurrentChannel = useSelector((state) => selectors.selectById(state, currentChannelId));
 
   return (
     <div className="d-flex flex-column h-100">
