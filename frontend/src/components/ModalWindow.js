@@ -4,7 +4,7 @@ import { Button, Modal, Form } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { selectors } from '../slices/channelsSlice.js';
-import { actions as modalActions } from '../slices/modalsSlice.js';
+import { actions as modalsActions } from '../slices/modalsSlice.js';
 import { ApiContext } from '../context/index.js';
 
 const ModalWindow = () => {
@@ -15,20 +15,16 @@ const ModalWindow = () => {
 
   const channelNames = useSelector(selectors.selectAll).map((channel) => channel.name);
 
-  const closeModal = () => dispatch(modalActions.closeModal());
+  const closeModal = () => dispatch(modalsActions.closeModal());
 
   const { type, channel } = useSelector((state) => state.modals);
 
   const onAdd = (name) => {
-    try {
-      chatApi.addNewChannel({ removable: true, name });
-    } catch (err) {}
+    chatApi.addNewChannel({ removable: true, name });
   };
 
   const onRename = (name) => {
-    try {
-      chatApi.renameChannel({ id: channel.id, name });
-    } catch (err) {}
+    chatApi.renameChannel({ id: channel.id, name });
   };
 
   const title = type === 'adding' ? 'добавить канал' : 'переименовать канал';

@@ -26,7 +26,7 @@ const PrivatePage = () => {
   const messages = useSelector(messagesSelectors.selectAll);
   const { currentChannelId } = useSelector((state) => state.channels);
   const currentMessages = messages.filter((message) => message.channelId === currentChannelId);
-  const showAddingModal = () => dispatch(actions.openModal({ type: 'adding', channel: null}))
+  const showAddingModal = () => dispatch(actions.openModal({ type: 'adding', channel: null }));
 
   return (
     <div className="d-flex flex-column h-100">
