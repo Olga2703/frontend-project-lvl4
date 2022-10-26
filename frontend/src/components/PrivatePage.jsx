@@ -13,6 +13,7 @@ import MessagesForm from './MessagesForm.jsx';
 import { selectors as messagesSelectors } from '../slices/messagesSlice.js';
 import { useAuth } from '../hooks/index.js';
 import { actions } from '../slices/modalsSlice.js';
+import Modal from './modal/Modal.jsx';
 
 const PrivatePage = () => {
   const dispatch = useDispatch();
@@ -21,13 +22,12 @@ const PrivatePage = () => {
   useEffect(() => {
     dispatch(fetchChannels(header));
   }, []);
-
   const channels = useSelector(selectors.selectAll);
   const messages = useSelector(messagesSelectors.selectAll);
   const { currentChannelId } = useSelector((state) => state.channels);
   const currentMessages = messages.filter((message) => message.channelId === currentChannelId);
   const showAddingModal = () => dispatch(actions.openModal({ type: 'adding', channel: null }));
-
+  const modalType = useSelector((state) => state.modals.type);
   return (
     <div className="d-flex flex-column h-100">
       <Container className='h-100 my-4 overflow-hidden rounded shadow'>
@@ -81,6 +81,7 @@ const PrivatePage = () => {
         </Col>
       </Row>
     </Container>
+    {modalType && <Modal />}
     </div>
   );
 };
