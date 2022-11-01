@@ -11,6 +11,7 @@ import Header from './Header.jsx';
 import LoginPage from './LoginPage.jsx';
 import NotFoundPage from './NotFoundPage.jsx';
 import PrivatePage from './PrivatePage.jsx';
+import Registration from './Registration.jsx';
 import routes from '../routes.js';
 import { AuthContext } from '../context/index.js';
 import { useAuth } from '../hooks/index.js';
@@ -61,6 +62,7 @@ const App = () => (
           <Route path={routes.chatPagePath()} element={<PrivateOutlet />}>
             <Route path='' element={<PrivatePage />} />
           </Route>
+          <Route path={routes.signupPagePath()} element={<Registration />} />
           <Route path={routes.loginPagePath()} element={<LoginPage />} />
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
