@@ -1,6 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { io } from 'socket.io-client';
+import { I18nextProvider, initReactI18next } from 'react-i18next';
+import i18n from 'i18next';
+import ru from './locales/ru.js';
 import App from './components/App.jsx';
 import store from './slices/index.js';
 import buildChatApi from './api/buildChatApi.js';
@@ -9,6 +12,18 @@ import { actions as channelActions } from './slices/channelsSlice.js';
 import { ApiContext } from './context/index.js';
 
 const init = () => {
+  const i18nextInstance = i18n.createInstance();
+  i18nextInstance.use(initReactI18next).init({
+    lng: 'ru',
+    debug: true,
+    interpolation: {
+      escapeValue: false,
+    },
+    resources: {
+      ru,
+    },
+  });
+
   const socket = io();
   const chatApi = buildChatApi(socket);
 
@@ -32,7 +47,9 @@ const init = () => {
   return (
     <Provider store={store}>
       <ApiContext.Provider value={chatApi}>
-        <App />
+        <I18nextProvider i18n={i18nextInstance}>
+          <App />
+        </I18nextProvider>
       </ApiContext.Provider>
     </Provider>
   );
