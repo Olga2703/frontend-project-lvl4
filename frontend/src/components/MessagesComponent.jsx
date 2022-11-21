@@ -1,14 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Col } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import { selectors as messagesSelectors } from '../slices/messagesSlice.js';
 import { selectors as channelsSelectors } from '../slices/channelsSlice.js';
 import MessagesForm from './MessagesForm.jsx';
 
 const MessagesComponent = () => {
   const messages = useSelector(messagesSelectors.selectAll);
+  const { t } = useTranslation();
   const { currentChannelId } = useSelector((state) => state.channels);
-  const currentChannel = useSelector((state) => channelsSelectors.selectById(state, currentChannelId));
+  const currentChannel = useSelector((state) => channelsSelectors
+    .selectById(state, currentChannelId));
   const currentMessages = messages.filter((message) => message.channelId === currentChannelId);
   return (
     currentChannel && (
@@ -18,7 +21,7 @@ const MessagesComponent = () => {
             <p className='m-0'>
               <b># {currentChannel.name}</b>
             </p>
-            <span className='text-muted'>{currentMessages.length} сообщений</span>
+            <span className='text-muted'>{t('messages.count', { count: currentMessages.length })}</span>
           </div>
           <div id='messages-box' className='chat-messages overflow-auto px-5'>
             {currentMessages.map((message) => (

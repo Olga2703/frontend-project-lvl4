@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Dropdown } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 import { actions as channelsActions } from '../slices/channelsSlice.js';
 import { actions as modalsActions } from '../slices/modalsSlice.js';
@@ -19,6 +20,7 @@ export const ChannelButton = ({ channel }) => {
 
 export const ChannelDropdownButton = ({ channel }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const showModal = (type) => () => dispatch(modalsActions.openModal({ type, channel }));
   const { currentChannelId } = useSelector((state) => state.channels);
   return (
@@ -28,11 +30,11 @@ export const ChannelDropdownButton = ({ channel }) => {
       split
       variant={channel.id === currentChannelId ? 'secondary' : ''}
       className="flex-grow-0">
-        <span className="visually-hidden">{'Управление каналом'}</span>
+        <span className="visually-hidden">{t('channels.control_channel')}</span>
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item role="button" onClick={showModal('remove')} href="#">{'Удалить'}</Dropdown.Item>
-        <Dropdown.Item role="button" onClick={showModal('rename')} href="#">{'Переименовать'}</Dropdown.Item>
+        <Dropdown.Item role="button" onClick={showModal('remove')} href="#">{t('channels.delete_channel')}</Dropdown.Item>
+        <Dropdown.Item role="button" onClick={showModal('rename')} href="#">{t('channels.rename_channel')}</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

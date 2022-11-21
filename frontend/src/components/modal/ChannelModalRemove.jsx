@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 import { selectors, actions as channelActions } from '../../slices/channelsSlice.js';
 import { actions as modalActions } from '../../slices/modalsSlice.js';
@@ -9,6 +10,7 @@ import { ApiContext } from '../../context/index.js';
 const RemoveChannelModal = () => {
   const chatApi = useContext(ApiContext);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const { channel } = useSelector((state) => state.modals);
   const generalChannelId = useSelector(selectors.selectAll)
@@ -31,13 +33,13 @@ const RemoveChannelModal = () => {
   return (
     <Modal show centered>
       <Modal.Header closeButton onHide={closeModal}>
-        <Modal.Title className="h4">{'удалить канал'}</Modal.Title>
+        <Modal.Title className="h4">{t('modal.title')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p className="lead">{'Уверены?'}</p>
+        <p className="lead">{t('modal.sure')}</p>
         <div className="d-flex justify-content-end">
-          <Button onClick={closeModal} variant="secondary" className="me-2">{'Отменить'}</Button>
-          <Button onClick={onRemove} variant="danger">{'Удалить'}</Button>
+          <Button onClick={closeModal} variant="secondary" className="me-2">{t('modal.cancel')}</Button>
+          <Button onClick={onRemove} variant="danger">{t('modal.remove')}</Button>
         </div>
       </Modal.Body>
     </Modal>

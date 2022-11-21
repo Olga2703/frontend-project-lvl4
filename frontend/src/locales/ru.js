@@ -40,5 +40,28 @@ export default {
       to_home1: 'Но вы можете перейти ',
       to_home2: 'на главную страницу',
     },
+    messages: {
+      count_one: '{{count}} сообщение',
+      count_few: '{{count}} сообщения',
+      count_many: '{{count}} сообщений',
+      write_message: 'Введите сообщение...',
+      send: 'Отправить',
+    },
+    channels: {
+      channels: 'Каналы',
+      control_channel: 'Управление каналом',
+      delete_channel: 'Удалить',
+      rename_channel: 'Переименовать',
+    },
+    modal: {
+      title: 'Удалить канал',
+      sure: 'Уверенны?',
+      cancel: 'Отменить',
+      remove: 'Удалить',
+      add_channel: 'Добавить канал',
+      rename_channel: 'Переименовать канал',
+      name_channel: 'Имя канала',
+      send: 'Отправить',
+    },
   },
 };

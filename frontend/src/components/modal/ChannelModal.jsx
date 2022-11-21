@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Modal, Form } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { selectors } from '../../slices/channelsSlice.js';
@@ -11,6 +12,7 @@ const ModalWindow = () => {
   const chatApi = useContext(ApiContext);
   const dispatch = useDispatch();
   const inputRef = useRef();
+  const { t } = useTranslation();
   useEffect(() => inputRef.current.focus(), []);
 
   const channelNames = useSelector(selectors.selectAll).map((channel) => channel.name);
@@ -27,7 +29,7 @@ const ModalWindow = () => {
     chatApi.renameChannel({ id: channel.id, name });
   };
 
-  const title = type === 'adding' ? 'добавить канал' : 'переименовать канал';
+  const title = type === 'adding' ? t('modal.add_channel') : t('modal.rename_channel');
   const handler = type === 'adding' ? onAdd : onRename;
 
   const formik = useFormik({
@@ -61,14 +63,14 @@ const ModalWindow = () => {
               value={formik.values.name}
             />
             <Form.Label className='visually-hidden' htmlFor='name'>
-              {'Имя канала'}
+              {t('modal.name_channel')}
             </Form.Label>
             {formik.touched.name && formik.errors.name ? <Form.Control.Feedback type='invalid'>{formik.errors.name}</Form.Control.Feedback> : null}
             <div className='d-flex justify-content-end'>
               <Button onClick={closeModal} type='button' variant='secondary' className='me-2'>
-                {'Отменить'}
+                {t('modal.cancel')}
               </Button>
-              <Button type='submit'>{'Отправить'}</Button>
+              <Button type='submit'>{t('modal.send')}</Button>
             </div>
           </div>
         </Form>

@@ -8,7 +8,7 @@ import { fetchChannels } from '../slices/channelsSlice.js';
 import { useAuth } from '../hooks/index.js';
 import Modal from './modal/Modal.jsx';
 import ChannelComponent from './ChannelComponent.jsx';
-import MessageComponent from './MessagesComponent.js';
+import MessageComponent from './MessagesComponent.jsx';
 
 const PrivatePage = () => {
   const dispatch = useDispatch();
