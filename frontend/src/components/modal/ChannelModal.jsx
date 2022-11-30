@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
+
 import * as yup from 'yup';
+import { toast } from 'react-toastify';
 import { selectors } from '../../slices/channelsSlice.js';
 import { actions as modalsActions } from '../../slices/modalsSlice.js';
 import { ApiContext } from '../../context/index.js';
@@ -22,11 +24,21 @@ const ModalWindow = () => {
   const { type, channel } = useSelector((state) => state.modals);
 
   const onAdd = (name) => {
-    chatApi.addNewChannel({ removable: true, name });
+    try {
+      chatApi.addNewChannel({ removable: true, name });
+      toast.success(t('success_message.channel_created'));
+    } catch (err) {
+      toast.error(t('errors.errors_network'));
+    }
   };
 
   const onRename = (name) => {
-    chatApi.renameChannel({ id: channel.id, name });
+    try {
+      chatApi.renameChannel({ id: channel.id, name });
+      toast.success(t('success_message.channel_renamed'));
+    } catch (err) {
+      toast.error(t('errors.errors_network'));
+    }
   };
 
   const title = type === 'adding' ? t('modal.add_channel') : t('modal.rename_channel');

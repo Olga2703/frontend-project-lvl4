@@ -14,8 +14,8 @@ export default {
       registration: 'Регистрация',
     },
     errors: {
-      erorrs_unknown: 'Неизвестная ошибка',
-      errors_network: 'Ошибка сети',
+      errors_unknown: 'Неизвестная ошибка',
+      errors_network: 'Ошибка соединения',
       errors_unregistered: 'Логин и пароль не зарегистрированны',
       validation: {
         username_length: 'От 3 до 20 символов',
@@ -62,6 +62,11 @@ export default {
       rename_channel: 'Переименовать канал',
       name_channel: 'Имя канала',
       send: 'Отправить',
+    },
+    success_message: {
+      channel_deleted: 'Канал удален',
+      channel_created: 'Канал создан',
+      channel_renamed: 'Канал переименован',
     },
   },
 };

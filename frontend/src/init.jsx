@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { io } from 'socket.io-client';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import i18n from 'i18next';
+import { Provider as ProviderRollbar, ErrorBoundary } from '@rollbar/react';
 import ru from './locales/ru.js';
 import App from './components/App.jsx';
 import store from './slices/index.js';
@@ -12,6 +13,11 @@ import { actions as channelActions } from './slices/channelsSlice.js';
 import { ApiContext } from './context/index.js';
 
 const init = () => {
+  const rollbarConfig = {
+    accessToken: process.env.TOKEN,
+    payload: 'production',
+  };
+
   const i18nextInstance = i18n.createInstance();
   i18nextInstance.use(initReactI18next).init({
     lng: 'ru',
@@ -45,13 +51,17 @@ const init = () => {
   });
 
   return (
-    <Provider store={store}>
-      <ApiContext.Provider value={chatApi}>
-        <I18nextProvider i18n={i18nextInstance}>
-          <App />
-        </I18nextProvider>
-      </ApiContext.Provider>
-    </Provider>
+    <ProviderRollbar config={rollbarConfig}>
+      <ErrorBoundary>
+        <Provider store={store}>
+          <ApiContext.Provider value={chatApi}>
+            <I18nextProvider i18n={i18nextInstance}>
+              <App />
+            </I18nextProvider>
+          </ApiContext.Provider>
+        </Provider>
+      </ErrorBoundary>
+    </ProviderRollbar>
   );
 };
 

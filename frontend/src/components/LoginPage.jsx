@@ -44,7 +44,7 @@ const LoginPage = () => {
           setAuthFailed(true);
           inputRef.current.focus();
         } else {
-          toast.error(t('errors_network'));
+          toast.error(t('errors.errors_network'));
         }
       }
     },

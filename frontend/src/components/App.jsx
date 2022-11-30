@@ -7,6 +7,7 @@ import {
   Navigate,
   Outlet,
 } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Header from './Header.jsx';
 import LoginPage from './LoginPage.jsx';
 import NotFoundPage from './NotFoundPage.jsx';
@@ -68,6 +69,7 @@ const App = () => (
         </Routes>
       </div>
     </Router>
+    <ToastContainer />
   </AuthProvider>
 );
 

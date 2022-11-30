@@ -2,18 +2,21 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Dropdown } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import * as filter from 'leo-profanity';
 
 import { actions as channelsActions } from '../slices/channelsSlice.js';
 import { actions as modalsActions } from '../slices/modalsSlice.js';
 
 export const ChannelButton = ({ channel }) => {
+  filter.add(filter.getDictionary('ru'));
+  filter.add(filter.getDictionary('en'));
   const dispatch = useDispatch();
   const { currentChannelId } = useSelector((state) => state.channels);
   const handleChannelClick = (id) => () => dispatch(channelsActions.setCurrentChannelId(id));
   return (
     <Button onClick={handleChannelClick(channel.id)} className='text-start text-truncate w-100 rounded-0' variant={channel.id === currentChannelId ? 'secondary' : ''}>
       <span className='me-1'>#</span>
-      {channel.name}
+      {filter.clean(channel.name)}
     </Button>
   );
 };

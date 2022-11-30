@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 import { selectors, actions as channelActions } from '../../slices/channelsSlice.js';
 import { actions as modalActions } from '../../slices/modalsSlice.js';
@@ -23,9 +24,10 @@ const RemoveChannelModal = () => {
   const onRemove = () => {
     try {
       chatApi.removeChannel(channel);
-      dispatch(channelActions.setCurrentChannel(generalChannelId));
+      dispatch(channelActions.setCurrentChannelId(generalChannelId));
+      toast.success(t('success_message.channel_deleted'));
     } catch (err) {
-      console.log(err);
+      toast.error(t('errors.errors_network'));
     }
     closeModal();
   };

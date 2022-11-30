@@ -4,6 +4,8 @@ import {
   Row,
 } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { fetchChannels } from '../slices/channelsSlice.js';
 import { useAuth } from '../hooks/index.js';
 import Modal from './modal/Modal.jsx';
@@ -13,12 +15,13 @@ import MessageComponent from './MessagesComponent.jsx';
 const PrivatePage = () => {
   const dispatch = useDispatch();
   const auth = useAuth();
+  const { t } = useTranslation();
   const header = auth.getAuthHeader();
   useEffect(() => {
     try {
       dispatch(fetchChannels(header));
     } catch (err) {
-      console.log(err);
+      toast.error(t('errors.errors_network'));
     }
   }, []);
 
