@@ -32,5 +32,5 @@ jobs:
       - name: run build
         run: |
           touch .env
-          echo ROLLBAR_ACCESS_TOKEN =${{ secrets.ROLLBAR_ACCESS_TOKEN }} >> .env
+          echo ROLLBAR_TOKEN =${{ secrets.ROLLBAR_ACCESS_TOKEN }} >> .env
           npm run build
