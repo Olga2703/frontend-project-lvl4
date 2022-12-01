@@ -1,3 +1,6 @@
+install:
+	make -C frontend install
+
 start-frontend:
 	make -C frontend start
 

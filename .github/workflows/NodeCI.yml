@@ -1,4 +1,4 @@
-name: build
+name: NodeCI
 
 on:
   - push
@@ -29,8 +29,3 @@ jobs:
       - name: run linter
         run: |
           make lint-frontend
-      - name: run build
-        run: |
-          touch .env
-          echo ROLLBAR_TOKEN =${{ secrets.ROLLBAR_ACCESS_TOKEN }} >> .env
-          npm run build
