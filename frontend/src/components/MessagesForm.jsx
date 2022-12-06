@@ -38,7 +38,7 @@ const Messages = () => {
               type='text'
               className='form-control border-0 p-0 ps-2'
               placeholder={t('messages.write_message')}
-              aria-label=''
+              aria-label='Новое сообщение'
               {...formik.getFieldProps('body')}
             />
             <Button type='submit' variant='' className='btn-group-vertical btn border-0' disabled={formik.values.body === '' || formik.isSubmitting}>
