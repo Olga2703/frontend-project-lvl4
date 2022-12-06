@@ -16,7 +16,7 @@ export default {
     errors: {
       errors_unknown: 'Неизвестная ошибка',
       errors_network: 'Ошибка соединения',
-      errors_unregistered: 'Логин и пароль не зарегистрированны',
+      errors_unregistered: 'Неверные имя пользователя или пароль',
       validation: {
         username_length: 'От 3 до 20 символов',
         password_length: 'Не менее 6 символов',
