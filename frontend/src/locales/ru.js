@@ -64,7 +64,7 @@ export default {
       send: 'Отправить',
     },
     success_message: {
-      channel_deleted: 'Канал удален',
+      channel_deleted: 'Канал удалён',
       channel_created: 'Канал создан',
       channel_renamed: 'Канал переименован',
     },
