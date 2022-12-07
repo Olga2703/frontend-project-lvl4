@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Card, Col, Container, Image, Row } from 'react-bootstrap';
+import { 
+  Card, Col, Container, Image, Row,
+} from 'react-bootstrap';
 import avatar from '../assets/avatar_1.jpg';
 import SignUpForm from './SignUpForm.jsx';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Button, Nav } from 'react-bootstrap';
-import { 
-  useSelector, useDispatch
+import {
+  useSelector, useDispatch,
 } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { selectors } from '../slices/channelsSlice.js';

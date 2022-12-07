@@ -1,7 +1,8 @@
+/* eslint arrow-body-style: ["error", "as-needed"] */
 import React, { useEffect, useRef } from 'react';
 import { Field, Form, Formik } from 'formik';
 import * as yup from 'yup';
-import { 
+import {
   FormFloating, FormControl, FormLabel, Button,
 } from 'react-bootstrap';
 import axios from 'axios';
@@ -20,7 +21,7 @@ const SignUpForm = () => {
     inputEl.current.focus();
   }, []);
 
-  const validatePassword = (password) => (value) =>
+  const validatePassword = (password) => (value) => 
     (value !== password ? t('errors.validation.matching_passwords') : undefined);
 
   return (
