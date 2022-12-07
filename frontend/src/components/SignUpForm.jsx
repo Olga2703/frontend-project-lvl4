@@ -1,4 +1,3 @@
-/* eslint arrow-body-style: ["error", "as-needed"] */
 import React, { useEffect, useRef } from 'react';
 import { Field, Form, Formik } from 'formik';
 import * as yup from 'yup';
@@ -21,9 +20,10 @@ const SignUpForm = () => {
     inputEl.current.focus();
   }, []);
 
-  const validatePassword = (password) => (value) => 
-    (value !== password ? t('errors.validation.matching_passwords') : undefined);
-
+  const validatePassword = (password) => (value) => (
+    (value !== password ? t('errors.validation.matching_passwords') : undefined)
+  );
+  
   return (
     <Formik
       validateOnBlur={false}
