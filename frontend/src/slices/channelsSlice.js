@@ -1,3 +1,4 @@
+/* eslint no-param-reassign: "error" */
 import { createAsyncThunk, createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import axios from 'axios';
 import routes from '../routes.js';

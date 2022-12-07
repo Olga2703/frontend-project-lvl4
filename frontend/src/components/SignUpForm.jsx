@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { Field, Form, Formik } from 'formik';
 import * as yup from 'yup';
-import { FormFloating, FormControl, FormLabel, Button } from 'react-bootstrap';
+import { 
+  FormFloating, FormControl, FormLabel, Button,
+} from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -19,7 +21,7 @@ const SignUpForm = () => {
   }, []);
 
   const validatePassword = (password) => (value) =>
-    value !== password ? t('errors.validation.matching_passwords') : undefined;
+    (value !== password ? t('errors.validation.matching_passwords') : undefined);
 
   return (
     <Formik
@@ -51,10 +53,7 @@ const SignUpForm = () => {
           })
           .catch((err) => {
             if (err.isAxiosError && err.response.status === 409) {
-              actions.setFieldError(
-                'confirmPassword',
-                t('errors.validation.account_already_exists')
-              );
+              actions.setFieldError('confirmPassword', t('errors.validation.account_already_exists'));
               inputEl.current.select();
               return;
             }
