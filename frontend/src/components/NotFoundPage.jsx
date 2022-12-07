@@ -12,7 +12,8 @@ const NotFoundPage = () => {
       />
       <h1 className="h4 text-muted">{t('not_found_page.not_found')}</h1>
       <p className="text-muted">
-        {t('not_found_page.to_home1')} <a href="/">{t('not_found_page.to_home2')}</a>
+        {t('not_found_page.to_home1')}
+        <a href="/">{t('not_found_page.to_home2')}</a>
       </p>
     </div>
   );

@@ -60,7 +60,7 @@ const ModalWindow = () => {
   return (
     <Modal show centered>
       <Modal.Header closeButton onHide={closeModal}>
-        <Modal.Title className='h4'>{title}</Modal.Title>
+        <Modal.Title className="h4">{title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={formik.handleSubmit}>
@@ -69,20 +69,22 @@ const ModalWindow = () => {
               isInvalid={formik.touched.name && formik.errors.name}
               ref={inputRef}
               onChange={formik.handleChange}
-              className='mb-2'
-              name='name'
-              id='name'
+              className="mb-2"
+              name="name"
+              id="name"
               value={formik.values.name}
             />
-            <Form.Label className='visually-hidden' htmlFor='name'>
+            <Form.Label className="visually-hidden" htmlFor="name">
               {t('modal.name_channel')}
             </Form.Label>
-            {formik.touched.name && formik.errors.name ? <Form.Control.Feedback type='invalid'>{formik.errors.name}</Form.Control.Feedback> : null}
-            <div className='d-flex justify-content-end'>
-              <Button onClick={closeModal} type='button' variant='secondary' className='me-2'>
+            {formik.touched.name && formik.errors.name ? (
+              <Form.Control.Feedback type="invalid">{formik.errors.name}</Form.Control.Feedback>
+            ) : null}
+            <div className="d-flex justify-content-end">
+              <Button onClick={closeModal} type="button" variant="secondary" className="me-2">
                 {t('modal.cancel')}
               </Button>
-              <Button type='submit'>{t('modal.send')}</Button>
+              <Button type="submit">{t('modal.send')}</Button>
             </div>
           </div>
         </Form>

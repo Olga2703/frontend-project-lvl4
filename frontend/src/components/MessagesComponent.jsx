@@ -13,7 +13,9 @@ const MessagesComponent = () => {
   const messages = useSelector(messagesSelectors.selectAll);
   const { t } = useTranslation();
   const { currentChannelId } = useSelector((state) => state.channels);
-  const currentChannel = useSelector((state) => channelsSelectors.selectById(state, currentChannelId));
+  const currentChannel = useSelector((state) =>
+    channelsSelectors.selectById(state, currentChannelId)
+  );
   const currentMessages = messages.filter((message) => message.channelId === currentChannelId);
   return (
     currentChannel && (
@@ -26,7 +28,9 @@ const MessagesComponent = () => {
                 {currentChannel.name}
               </b>
             </p>
-            <span className="text-muted">{t('messages.count', { count: currentMessages.length })}</span>
+            <span className="text-muted">
+              {t('messages.count', { count: currentMessages.length })}
+            </span>
           </div>
           <div id="messages-box" className="chat-messages overflow-auto px-5">
             {currentMessages.map((message) => (

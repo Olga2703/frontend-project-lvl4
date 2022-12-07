@@ -18,7 +18,8 @@ const SignUpForm = () => {
     inputEl.current.focus();
   }, []);
 
-  const validatePassword = (password) => (value) => value !== password ? t('errors.validation.matching_passwords') : undefined;
+  const validatePassword = (password) => (value) =>
+    value !== password ? t('errors.validation.matching_passwords') : undefined;
 
   return (
     <Formik
@@ -34,7 +35,10 @@ const SignUpForm = () => {
           .min(3, t('errors.validation.username_length'))
           .max(20, t('errors.validation.username_length'))
           .required(t('errors.validation.required_field')),
-        password: yup.string().min(6, t('errors.validation.password_length')).required(t('errors.validation.required_field')),
+        password: yup
+          .string()
+          .min(6, t('errors.validation.password_length'))
+          .required(t('errors.validation.required_field')),
       })}
       onSubmit={({ username, password }, actions) => {
         axios
@@ -47,13 +51,17 @@ const SignUpForm = () => {
           })
           .catch((err) => {
             if (err.isAxiosError && err.response.status === 409) {
-              actions.setFieldError('confirmPassword', t('errors.validation.account_already_exists'));
+              actions.setFieldError(
+                'confirmPassword',
+                t('errors.validation.account_already_exists')
+              );
               inputEl.current.select();
               return;
             }
             throw err;
           });
-      }}>
+      }}
+    >
       {({ errors, values }) => (
         <Form className="w-50">
           <h1 className="text-center mb-4">{t('registration_form.header')}</h1>
