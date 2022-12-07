@@ -14,8 +14,8 @@ export const ChannelButton = ({ channel }) => {
   const { currentChannelId } = useSelector((state) => state.channels);
   const handleChannelClick = (id) => () => dispatch(channelsActions.setCurrentChannelId(id));
   return (
-    <Button onClick={handleChannelClick(channel.id)} className='text-start text-truncate w-100 rounded-0' variant={channel.id === currentChannelId ? 'secondary' : ''}>
-      <span className='me-1'>#</span>
+    <Button onClick={handleChannelClick(channel.id)} className="text-start text-truncate w-100 rounded-0" variant={channel.id === currentChannelId ? 'secondary' : ''}>
+      <span className="me-1">#</span>
       {filter.clean(channel.name)}
     </Button>
   );
@@ -30,9 +30,10 @@ export const ChannelDropdownButton = ({ channel }) => {
     <Dropdown className="d-flex btn-group">
       <ChannelButton channel={channel} />
       <Dropdown.Toggle
-      split
-      variant={channel.id === currentChannelId ? 'secondary' : ''}
-      className="flex-grow-0">
+        split
+        variant={channel.id === currentChannelId ? 'secondary' : ''}
+        className="flex-grow-0"
+      >
         <span className="visually-hidden">{t('channels.control_channel')}</span>
       </Dropdown.Toggle>
       <Dropdown.Menu>

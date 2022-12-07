@@ -10,9 +10,9 @@ const Header = () => {
     return auth.user && <Button onClick={auth.logOut}>{t('navbar.btn_out')}</Button>;
   };
   return (
-    <Navbar bg='white' expand='lg' className='shadow-sm'>
-      <div className='container'>
-        <Navbar.Brand href='/'>{t('navbar.header')}</Navbar.Brand>
+    <Navbar bg="white" expand="lg" className="shadow-sm">
+      <div className="container">
+        <Navbar.Brand href="/">{t('navbar.header')}</Navbar.Brand>
         <AuthButton />
       </div>
     </Navbar>

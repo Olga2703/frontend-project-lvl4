@@ -51,57 +51,58 @@ const LoginPage = () => {
   });
 
   return (
-    <div className='container-fluid h-100 mt-5'>
-      <div className='row justify-content-center align-content-center h-100'>
-        <div className='col-12 col-md-8 col-xxl-6'>
-          <div className='card shadow-sm'>
-            <div className='card-body row p-5'>
-              <div className='col-12 col-md-6 d-flex align-items-center justify-content-center'>
-                <img src={avatar} className='rounded-circle' alt={t('login_page.avatar')} />
+    <div className="container-fluid h-100 mt-5">
+      <div className="row justify-content-center align-content-center h-100">
+        <div className="col-12 col-md-8 col-xxl-6">
+          <div className="card shadow-sm">
+            <div className="card-body row p-5">
+              <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
+                <img src={avatar} className="rounded-circle" alt={t('login_page.avatar')} />
               </div>
-              <Form onSubmit={formik.handleSubmit} className='col-12 col-md-6 mt-3 mt-mb-0'>
-                <h1 className='text-center mb-4'>{t('login_page.header')}</h1>
-                <Form.Group className='form-floating mb-3'>
+              <Form onSubmit={formik.handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
+                <h1 className="text-center mb-4">{t('login_page.header')}</h1>
+                <Form.Group className="form-floating mb-3">
                   <Form.Control
                     onChange={formik.handleChange}
                     value={formik.values.username || ''}
-                    name='username'
-                    id='username'
-                    autoComplete='username'
+                    name="username"
+                    id="username"
+                    autoComplete="username"
                     isInvalid={authFailed}
                     required
                     ref={inputRef}
                     placeholder={t('login_page.placeholder')}
                   />
-                  <label htmlFor='username'>{t('login_page.placeholder')}</label>
+                  <label htmlFor="username">{t('login_page.placeholder')}</label>
                 </Form.Group>
-                <Form.Group className='form-floating mb-4'>
+                <Form.Group className="form-floating mb-4">
                   <Form.Control
-                    type='password'
+                    type="password"
                     onChange={formik.handleChange}
                     value={formik.values.password}
-                    name='password'
-                    id='password'
-                    autoComplete='current-password'
+                    name="password"
+                    id="password"
+                    autoComplete="current-password"
                     isInvalid={authFailed}
                     required
                     placeholder={t('login_page.password')}
                   />
-                  <Form.Label htmlFor='password'>{t('login_page.password')}</Form.Label>
+                  <Form.Label htmlFor="password">{t('login_page.password')}</Form.Label>
                   {authFailed && (
-                    <Form.Control.Feedback type='invalid' tooltip>
+                    <Form.Control.Feedback type="invalid" tooltip>
                       {t('errors.errors_unregistered')}
                     </Form.Control.Feedback>
                   )}
                 </Form.Group>
-                <Button type='submit' variant='outline-primary' className='w-100 mb-3'>
+                <Button type="submit" variant="outline-primary" className="w-100 mb-3">
                   {t('login_page.btn_in')}
                 </Button>
               </Form>
             </div>
-            <div className='card-footer p-4'>
-              <div className='text-center'>
-                <span>{t('login_page.no_account')}</span> <Link to={routes.signupPagePath()}>{t('login_page.registration')}</Link>
+            <div className="card-footer p-4">
+              <div className="text-center">
+                <span>{t('login_page.no_account')} </span>
+                <Link to={routes.signupPagePath()}>{t('login_page.registration')}</Link>
               </div>
             </div>
           </div>
