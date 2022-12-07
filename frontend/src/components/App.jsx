@@ -43,7 +43,8 @@ const AuthProvider = ({ children }) => {
         logOut,
         getAuthHeader,
         user,
-      }}>
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -57,15 +58,15 @@ const PrivateOutlet = () => {
 const App = () => (
   <AuthProvider>
     <Router>
-      <div className='d-flex flex-column h-100'>
+      <div className="d-flex flex-column h-100">
         <Header />
         <Routes>
           <Route path={routes.chatPagePath()} element={<PrivateOutlet />}>
-            <Route path='' element={<PrivatePage />} />
+            <Route path="" element={<PrivatePage />} />
           </Route>
           <Route path={routes.signupPagePath()} element={<Registration />} />
           <Route path={routes.loginPagePath()} element={<LoginPage />} />
-          <Route path='*' element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
     </Router>
