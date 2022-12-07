@@ -23,7 +23,7 @@ const SignUpForm = () => {
   const validatePassword = (password) => (value) => (
     (value !== password ? t('errors.validation.matching_passwords') : undefined)
   );
-  
+
   return (
     <Formik
       validateOnBlur={false}

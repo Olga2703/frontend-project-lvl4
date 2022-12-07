@@ -14,8 +14,7 @@ const MessagesComponent = () => {
   const { t } = useTranslation();
   const { currentChannelId } = useSelector((state) => state.channels);
   const currentChannel = useSelector((state) => (
-    channelsSelectors.selectById(state, currentChannelId)
-    )
+    channelsSelectors.selectById(state, currentChannelId))
   );
   const currentMessages = messages.filter((message) => message.channelId === currentChannelId);
   return (

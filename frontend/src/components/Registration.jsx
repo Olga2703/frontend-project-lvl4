@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { 
+import {
   Card, Col, Container, Image, Row,
 } from 'react-bootstrap';
 import avatar from '../assets/avatar_1.jpg';
