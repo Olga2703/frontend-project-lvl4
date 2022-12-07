@@ -13,8 +13,7 @@ const MessagesComponent = () => {
   const messages = useSelector(messagesSelectors.selectAll);
   const { t } = useTranslation();
   const { currentChannelId } = useSelector((state) => state.channels);
-  const currentChannel = useSelector((state) => channelsSelectors
-    .selectById(state, currentChannelId));
+  const currentChannel = useSelector((state) => channelsSelectors.selectById(state, currentChannelId));
   const currentMessages = messages.filter((message) => message.channelId === currentChannelId);
   return (
     currentChannel && (
@@ -23,7 +22,8 @@ const MessagesComponent = () => {
           <div className="bg-light mb-4 p-3 shadow-sm small">
             <p className="m-0">
               <b>
-                # {currentChannel.name}
+                <span># </span>
+                {currentChannel.name}
               </b>
             </p>
             <span className="text-muted">{t('messages.count', { count: currentMessages.length })}</span>

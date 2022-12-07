@@ -28,8 +28,7 @@ const Messages = () => {
         }
         values.body = '';
         actions.setSubmitting(false);
-      }}
-    >
+      }}>
       {(formik) => (
         <form onSubmit={formik.handleSubmit} className="py-1 border rounded-2">
           <div className="input-group has-validation">

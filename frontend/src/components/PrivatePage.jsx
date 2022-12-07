@@ -1,8 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
-import {
-  Container,
-  Row,
-} from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
@@ -28,13 +26,13 @@ const PrivatePage = () => {
   const modalType = useSelector((state) => state.modals.type);
   return (
     <div className="d-flex flex-column h-100">
-      <Container className='h-100 my-4 overflow-hidden rounded shadow'>
-      <Row className='h-100 bg-white flex-md-row'>
-        <ChannelComponent />
-        <MessageComponent />
-      </Row>
-    </Container>
-    {modalType && <Modal />}
+      <Container className="h-100 my-4 overflow-hidden rounded shadow">
+        <Row className="h-100 bg-white flex-md-row">
+          <ChannelComponent />
+          <MessageComponent />
+        </Row>
+      </Container>
+      {modalType && <Modal />}
     </div>
   );
 };
