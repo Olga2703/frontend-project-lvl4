@@ -13,7 +13,6 @@ const Messages = () => {
   const { t } = useTranslation();
   useEffect(() => inputRef.current.focus());
   const channelId = useSelector((state) => state.channels.currentChannelId);
-  console.log(channelId);
   return (
     <Formik
       initialValues={{
