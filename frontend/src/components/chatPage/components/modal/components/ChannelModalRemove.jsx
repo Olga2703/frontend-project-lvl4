@@ -4,9 +4,9 @@ import { Modal, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
-import { selectors, actions as channelActions } from '../../slices/channelsSlice.js';
-import { actions as modalActions } from '../../slices/modalsSlice.js';
-import { ApiContext } from '../../context/index.js';
+import { selectors, actions as channelActions } from '../../../../../slices/channelsSlice.js';
+import { actions as modalActions } from '../../../../../slices/modalsSlice.js';
+import { ApiContext } from '../../../../../context/index.js';
 
 const RemoveChannelModal = () => {
   const chatApi = useContext(ApiContext);

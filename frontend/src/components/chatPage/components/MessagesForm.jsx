@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import { Formik } from 'formik';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { ApiContext } from '../context/index.js';
+import { ApiContext } from '../../../context/index.js';
 
 const Messages = () => {
   const inputRef = useRef();

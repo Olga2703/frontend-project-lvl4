@@ -6,9 +6,9 @@ import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 
-import { useAuth } from '../hooks/index.js';
-import routes from '../routes.js';
-import avatar from '../assets/avatar.jpg';
+import { useAuth } from '../../hooks/index.js';
+import routes from '../../routes.js';
+import avatar from '../../assets/avatar.jpg';
 
 const LoginPage = () => {
   const auth = useAuth();

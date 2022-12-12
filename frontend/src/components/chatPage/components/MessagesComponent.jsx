@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import * as filter from 'leo-profanity';
-import { getCurrentMessages } from '../slices/messagesSlice.js';
-import { getCurrentChannelAndId } from '../slices/channelsSlice.js';
+import { getCurrentMessages } from '../../../slices/messagesSlice.js';
+import { getCurrentChannelAndId } from '../../../slices/channelsSlice.js';
 import MessagesForm from './MessagesForm.jsx';
 
 const MessagesComponent = () => {

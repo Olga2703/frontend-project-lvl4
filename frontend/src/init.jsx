@@ -8,7 +8,7 @@ import ru from './locales/ru.js';
 import App from './components/App.jsx';
 import store from './slices/index.js';
 import buildChatApi from './api/buildChatApi.js';
-import NotFoundPage from './components/NotFoundPage.jsx';
+import NotFoundPage from './components/notFoundPage/NotFoundPage.jsx';
 import { actions as messagesActions } from './slices/messagesSlice.js';
 import { actions as channelActions } from './slices/channelsSlice.js';
 import { ApiContext } from './context/index.js';

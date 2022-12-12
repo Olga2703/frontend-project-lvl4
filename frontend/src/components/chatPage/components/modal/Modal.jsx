@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import ChannelModal from './ChannelModal.jsx';
-import ChannelModalRemove from './ChannelModalRemove.jsx';
+import ChannelModal from './components/ChannelModal.jsx';
+import ChannelModalRemove from './components/ChannelModalRemove.jsx';
 
 const Modal = () => {
   const { type } = useSelector((state) => state.modals);

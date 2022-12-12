@@ -4,11 +4,11 @@ import { Container, Row } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { fetchChannels } from '../slices/channelsSlice.js';
-import { useAuth } from '../hooks/index.js';
-import Modal from './modal/Modal.jsx';
-import ChannelComponent from './ChannelComponent.jsx';
-import MessageComponent from './MessagesComponent.jsx';
+import { fetchChannels } from '../../slices/channelsSlice.js';
+import { useAuth } from '../../hooks/index.js';
+import Modal from './components/modal/Modal.jsx';
+import ChannelComponent from './components/ChannelComponent.jsx';
+import MessageComponent from './components/MessagesComponent.jsx';
 
 const PrivatePage = () => {
   const dispatch = useDispatch();

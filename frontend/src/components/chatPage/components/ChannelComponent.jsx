@@ -4,8 +4,8 @@ import {
   useSelector, useDispatch,
 } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { selectors } from '../slices/channelsSlice.js';
-import { actions } from '../slices/modalsSlice.js';
+import { selectors } from '../../../slices/channelsSlice.js';
+import { actions } from '../../../slices/modalsSlice.js';
 
 import { ChannelButton, ChannelDropdownButton } from './ChannelButtons.jsx';
 

@@ -7,8 +7,8 @@ import {
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAuth } from '../hooks/index.js';
-import routes from '../routes.js';
+import { useAuth } from '../../../hooks/index.js';
+import routes from '../../../routes.js';
 
 const SignUpForm = () => {
   const inputEl = useRef();

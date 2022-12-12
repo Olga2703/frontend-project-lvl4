@@ -8,10 +8,10 @@ import {
 } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Header from './Header.jsx';
-import LoginPage from './LoginPage.jsx';
-import NotFoundPage from './NotFoundPage.jsx';
-import PrivatePage from './PrivatePage.jsx';
-import Registration from './Registration.jsx';
+import LoginPage from './loginPage/LoginPage.jsx';
+import NotFoundPage from './notFoundPage/NotFoundPage.jsx';
+import ChatPage from './chatPage/ChatPage.jsx';
+import Registration from './signupPage/Registration.jsx';
 import routes from '../routes.js';
 import { useAuth } from '../hooks/index.js';
 import AuthProvider from '../api/AuthProvider.jsx';
@@ -28,7 +28,7 @@ const App = () => (
         <Header />
         <Routes>
           <Route path={routes.chatPagePath()} element={<PrivateOutlet />}>
-            <Route path="" element={<PrivatePage />} />
+            <Route path="" element={<ChatPage />} />
           </Route>
           <Route path={routes.signupPagePath()} element={<Registration />} />
           <Route path={routes.loginPagePath()} element={<LoginPage />} />

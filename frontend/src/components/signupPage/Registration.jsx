@@ -1,10 +1,9 @@
 import React from 'react';
-
 import {
   Card, Col, Container, Image, Row,
 } from 'react-bootstrap';
-import avatar from '../assets/avatar_1.jpg';
-import SignUpForm from './SignUpForm.jsx';
+import avatar from '../../assets/avatar_1.jpg';
+import SignUpForm from './components/SignUpForm.jsx';
 
 const Registration = () => (
   <Container fluid className="h-100">

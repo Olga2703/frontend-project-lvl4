@@ -6,9 +6,9 @@ import { useFormik } from 'formik';
 
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
-import { selectors } from '../../slices/channelsSlice.js';
-import { actions as modalsActions } from '../../slices/modalsSlice.js';
-import { ApiContext } from '../../context/index.js';
+import { selectors } from '../../../../../slices/channelsSlice.js';
+import { actions as modalsActions } from '../../../../../slices/modalsSlice.js';
+import { ApiContext } from '../../../../../context/index.js';
 
 const ModalWindow = () => {
   const chatApi = useContext(ApiContext);
