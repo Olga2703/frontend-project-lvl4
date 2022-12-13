@@ -125,8 +125,11 @@ const SignUpForm = () => {
               </div>
             )}
           </FormFloating>
-          <Button variant="outline-primary" className="w-100" type="submit">
+          <Button variant="outline-primary" className="w-100 mb-3" type="submit">
             {t('registration_form.btn_register')}
+          </Button>
+          <Button href="/" variant="primary" className="w-100 mb-3">
+              {t('login_page.btn_in')}
           </Button>
         </Form>
       )}

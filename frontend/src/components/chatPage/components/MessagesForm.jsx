@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useContext } from 'react';
 import { Button } from 'react-bootstrap';
 import { Formik } from 'formik';
+import * as yup from 'yup';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ApiContext } from '../../../context/index.js';
@@ -18,6 +19,13 @@ const Messages = () => {
       initialValues={{
         body: '',
       }}
+      validationSchema={yup.object({
+        body: yup
+          .string()
+          .trim()
+          .min(1, 'min 1')
+          .required('required'),
+      })}
       onSubmit={(values, actions) => {
         const { username } = JSON.parse(localStorage.getItem('user'));
         console.log(values);
@@ -47,7 +55,7 @@ const Messages = () => {
               type="submit"
               variant=""
               className="btn-group-vertical btn border-0"
-              disabled={formik.values.body === '' || formik.isSubmitting}
+              disabled={!formik.isValid || formik.isSubmitting}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
