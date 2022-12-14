@@ -17,7 +17,7 @@ const PrivatePage = () => {
   const header = auth.getAuthHeader();
   const loadingStatus = useSelector(selectorStatus);
   useEffect(() => {
-      dispatch(fetchChannels(header));
+    dispatch(fetchChannels(header));
   }, []);
 
   const modalType = useSelector((state) => state.modals.type);

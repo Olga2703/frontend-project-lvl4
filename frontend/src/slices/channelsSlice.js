@@ -30,20 +30,20 @@ const channelsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-     .addCase(fetchChannels.pending, (state) => {
-       state.loadingStatus = 'loading';
-       state.error = null;
-     })
-     .addCase(fetchChannels.fulfilled, (state, action) => {
-       channelsAdapter.addMany(state, action.payload.channels);
-       state.currentChannelId = action.payload.currentChannelId;
-       state.loadingStatus = 'idle';
-       state.error = null;
-     })
-     .addCase(fetchChannels.rejected, (state, action) => {
-       state.loadingStatus = 'failed';
-       state.error = action.error.code;
-     });
+      .addCase(fetchChannels.pending, (state) => {
+        state.loadingStatus = 'loading';
+        state.error = null;
+      })
+      .addCase(fetchChannels.fulfilled, (state, action) => {
+        channelsAdapter.addMany(state, action.payload.channels);
+        state.currentChannelId = action.payload.currentChannelId;
+        state.loadingStatus = 'idle';
+        state.error = null;
+      })
+      .addCase(fetchChannels.rejected, (state, action) => {
+        state.loadingStatus = 'failed';
+        state.error = action.error.code;
+      });
   },
 });
 

@@ -24,7 +24,8 @@ export const selectors = messageAdapter.getSelectors((state) => state.messages);
 export const getCurrentMessages = (state) => {
   const messages = selectors.selectAll(state);
   const getCurrentChannelId = state.channels.currentChannelId;
-  return messages.filter((message) => message.channelId === getCurrentChannelId);
+  const currentMessages = messages.filter((message) => message.channelId === getCurrentChannelId);
+  return { messages, currentMessages };
 };
 export const { actions } = messagesSlice;
 export default messagesSlice.reducer;

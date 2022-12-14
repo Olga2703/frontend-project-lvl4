@@ -12,7 +12,8 @@ const MessagesComponent = () => {
   filter.add(filter.getDictionary('en'));
   const { t } = useTranslation();
   const { currentChannel } = useSelector(getCurrentChannelAndId);
-  const currentMessages = useSelector(getCurrentMessages);
+  const { currentMessages } = useSelector(getCurrentMessages);
+
   return (
     currentChannel && (
       <Col className="p-0 h-100">
