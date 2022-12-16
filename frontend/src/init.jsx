@@ -10,12 +10,13 @@ import store from './slices/index.js';
 import buildChatApi from './api/buildChatApi.js';
 import NotFoundPage from './components/notFoundPage/NotFoundPage.jsx';
 import { ApiContext } from './context/index.js';
+
 const ErrorBoundaryPage = () => <NotFoundPage />;
 
 const init = () => {
   const rollbarConfig = {
     enabled: process.env.NODE_ENV === 'production',
-    accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
+    accessToken: process.env.REACT_APP_ROLLBAR_ACCESS_TOKEN,
     captureUncaught: true,
     captureUnhandledRejections: true,
     payload: {
