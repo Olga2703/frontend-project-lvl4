@@ -13,17 +13,16 @@ const RemoveChannelModal = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const { channel } = useSelector((state) => state.modals);
+  const { extraData } = useSelector((state) => state.modals);
   const generalChannelId = useSelector(selectors.selectAll)
     .find((ch) => ch.name === 'general').id;
   console.log(generalChannelId);
 
   const closeModal = () => dispatch(modalActions.closeModal());
-  console.log(channel);
 
   const onRemove = () => {
     try {
-      chatApi.removeChannel(channel);
+      chatApi.removeChannel(extraData);
       dispatch(channelActions.setCurrentChannelId(generalChannelId));
       toast.success(t('success_message.channel_deleted'));
     } catch (err) {

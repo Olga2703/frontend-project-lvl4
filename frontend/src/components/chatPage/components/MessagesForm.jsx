@@ -28,7 +28,6 @@ const Messages = () => {
       })}
       onSubmit={(values, actions) => {
         const { username } = JSON.parse(localStorage.getItem('user'));
-        console.log(values);
         const message = { ...values, channelId, username };
         try {
           chatApi.sendMessage(message);

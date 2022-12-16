@@ -20,8 +20,7 @@ const ModalWindow = () => {
   const channelNames = useSelector(selectors.selectAll).map((channel) => channel.name);
 
   const closeModal = () => dispatch(modalsActions.closeModal());
-  console.log(useSelector((state) => state.modals));
-  const { type, channel } = useSelector((state) => state.modals);
+  const { type, extraData } = useSelector((state) => state.modals);
 
   const onAdd = (name) => {
     try {
@@ -34,7 +33,7 @@ const ModalWindow = () => {
 
   const onRename = (name) => {
     try {
-      chatApi.renameChannel({ id: channel.id, name });
+      chatApi.renameChannel({ id: extraData.id, name });
       toast.success(t('success_message.channel_renamed'));
     } catch (err) {
       toast.error(t('errors.errors_network'));

@@ -13,7 +13,7 @@ const ChannelComponent = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const channels = useSelector(selectors.selectAll);
-  const showAddingModal = () => dispatch(actions.openModal({ type: 'adding', channel: null }));
+  const showAddingModal = () => dispatch(actions.openModal({ type: 'adding', extraData: null }));
 
   return (
     <Col xs={4} md={2} className="border-end pt-5 px-0 bg-light">

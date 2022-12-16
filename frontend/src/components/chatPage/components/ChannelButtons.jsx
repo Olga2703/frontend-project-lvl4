@@ -22,6 +22,7 @@ export const ChannelButton = ({ channel }) => {
 };
 
 export const ChannelDropdownButton = ({ channel }) => {
+  console.log(channel);
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const showModal = (type) => () => dispatch(modalsActions.openModal({ type, channel }));
