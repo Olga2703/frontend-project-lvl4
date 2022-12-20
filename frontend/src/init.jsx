@@ -9,7 +9,7 @@ import App from './components/App.jsx';
 import store from './slices/index.js';
 import buildChatApi from './api/buildChatApi.js';
 import NotFoundPage from './components/notFoundPage/NotFoundPage.jsx';
-import { ApiContext } from './context/index.js';
+import { ApiContext } from './hooks/index.js';
 
 const ErrorBoundaryPage = () => <NotFoundPage />;
 

@@ -9,6 +9,7 @@ import { useAuth } from '../../hooks/index.js';
 import Modal from './components/modal/Modal.jsx';
 import ChannelComponent from './components/ChannelComponent.jsx';
 import MessageComponent from './components/MessagesComponent.jsx';
+import  { getModalType } from "../../slices/modalsSlice.js";
 
 const PrivatePage = () => {
   const dispatch = useDispatch();
@@ -20,9 +21,10 @@ const PrivatePage = () => {
     dispatch(fetchChannels(header));
   }, []);
 
-  const modalType = useSelector((state) => state.modals.type);
+  const modalType = useSelector(getModalType);
   if (loadingStatus === 'failed') {
     toast.error(t('errors.errors_network'));
+    auth.logOut();
   }
   return (
     <div className="d-flex flex-column h-100">

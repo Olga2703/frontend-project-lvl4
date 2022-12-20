@@ -23,6 +23,7 @@ export default {
         required_field: 'Обязательное поле',
         matching_passwords: 'Пароли должны совпадать',
         account_already_exists: 'Такой пользователь уже существует',
+        channel_already_exists: 'Канал с таким называнием уже существует'
       },
     },
     registration_form: {

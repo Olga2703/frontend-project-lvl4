@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
@@ -6,10 +6,10 @@ import { toast } from 'react-toastify';
 
 import { selectors, actions as channelActions } from '../../../../../slices/channelsSlice.js';
 import { actions as modalActions } from '../../../../../slices/modalsSlice.js';
-import { ApiContext } from '../../../../../context/index.js';
+import { useChatAPI } from "../../../../../hooks";
 
 const RemoveChannelModal = () => {
-  const chatApi = useContext(ApiContext);
+  const chatApi = useChatAPI();
   const dispatch = useDispatch();
   const { t } = useTranslation();
 

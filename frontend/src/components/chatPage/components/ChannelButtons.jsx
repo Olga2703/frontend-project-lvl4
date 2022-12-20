@@ -12,6 +12,7 @@ export const ChannelButton = ({ channel }) => {
   filter.add(filter.getDictionary('en'));
   const dispatch = useDispatch();
   const { currentChannelId } = useSelector((state) => state.channels);
+  // const currentChannelId = useSelector(getCurrentChannel);
   const handleChannelClick = (id) => () => dispatch(channelsActions.setCurrentChannelId(id));
   return (
     <Button onClick={handleChannelClick(channel.id)} className="text-start text-truncate w-100 rounded-0" variant={channel.id === currentChannelId ? 'secondary' : ''}>
@@ -22,11 +23,11 @@ export const ChannelButton = ({ channel }) => {
 };
 
 export const ChannelDropdownButton = ({ channel }) => {
-  console.log(channel);
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const showModal = (type) => () => dispatch(modalsActions.openModal({ type, channel }));
   const { currentChannelId } = useSelector((state) => state.channels);
+  // const currentChannelId = useSelector(getCurrentChannel);
   return (
     <Dropdown className="d-flex btn-group">
       <ChannelButton channel={channel} />

@@ -1,16 +1,16 @@
 /* eslint no-param-reassign: "error" */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useEffect, useRef, useContext } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { ApiContext } from '../../../context/index.js';
+import { useChatAPI } from "../../../hooks/index.js";
 
 const Messages = () => {
   const inputRef = useRef();
-  const chatApi = useContext(ApiContext);
+  const chatApi = useChatAPI();
   const { t } = useTranslation();
   useEffect(() => inputRef.current.focus());
   const channelId = useSelector((state) => state.channels.currentChannelId);

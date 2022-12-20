@@ -20,6 +20,7 @@ const modalsSlice = createSlice({
   },
 });
 
+export const getModalType = (state) => state.modals.type;
 export const { actions } = modalsSlice;
 
 export default modalsSlice.reducer;

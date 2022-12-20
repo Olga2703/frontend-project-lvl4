@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
@@ -8,10 +8,10 @@ import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import { selectors } from '../../../../../slices/channelsSlice.js';
 import { actions as modalsActions } from '../../../../../slices/modalsSlice.js';
-import { ApiContext } from '../../../../../context/index.js';
+import { useChatAPI } from "../../../../../hooks/index.js";
 
 const ModalWindow = () => {
-  const chatApi = useContext(ApiContext);
+  const chatApi = useChatAPI();
   const dispatch = useDispatch();
   const inputRef = useRef();
   const { t } = useTranslation();
@@ -48,7 +48,10 @@ const ModalWindow = () => {
       name: '',
     },
     validationSchema: yup.object({
-      name: yup.string().required().notOneOf(channelNames),
+      name: yup
+        .string()
+        .required(t('errors.validation.required_field'))
+        .notOneOf(channelNames, t('errors.validation.channel_already_exists')),
     }),
     onSubmit: ({ name }) => {
       handler(name);

@@ -50,9 +50,9 @@ const channelsSlice = createSlice({
 export const { actions } = channelsSlice;
 export const selectors = channelsAdapter.getSelectors((state) => state.channels);
 export const selectorStatus = (state) => state.channels.loadingStatus;
-export const getCurrentChannelAndId = (state) => {
+export const getCurrentChannel = (state) => {
   const selectChannelId = state.channels.currentChannelId;
   const currentChannel = selectors.selectById(state, selectChannelId);
-  return { selectChannelId, currentChannel };
+  return currentChannel;
 };
 export default channelsSlice.reducer;

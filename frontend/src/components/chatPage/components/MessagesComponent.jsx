@@ -3,16 +3,16 @@ import { useSelector } from 'react-redux';
 import { Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import * as filter from 'leo-profanity';
-import { getCurrentMessages } from '../../../slices/messagesSlice.js';
-import { getCurrentChannelAndId } from '../../../slices/channelsSlice.js';
+import { getCurrentChannelsMessages } from '../../../slices/messagesSlice.js';
+import { getCurrentChannel } from '../../../slices/channelsSlice.js';
 import MessagesForm from './MessagesForm.jsx';
 
 const MessagesComponent = () => {
   filter.add(filter.getDictionary('ru'));
   filter.add(filter.getDictionary('en'));
   const { t } = useTranslation();
-  const { currentChannel } = useSelector(getCurrentChannelAndId);
-  const { currentMessages } = useSelector(getCurrentMessages);
+  const currentChannel = useSelector(getCurrentChannel);
+  const currentMessages = useSelector(getCurrentChannelsMessages);
 
   return (
     currentChannel && (
