@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
@@ -13,6 +13,15 @@ const MessagesComponent = () => {
   const { t } = useTranslation();
   const currentChannel = useSelector(getCurrentChannel);
   const currentMessages = useSelector(getCurrentChannelsMessages);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  };
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [currentMessages]);
 
   return (
     currentChannel && (
@@ -37,6 +46,7 @@ const MessagesComponent = () => {
                 {filter.clean(message.body)}
               </div>
             ))}
+            <div ref={messagesEndRef} />
           </div>
           <div className="mt-auto px-5 py-3">
             <MessagesForm />
