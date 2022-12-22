@@ -7,7 +7,6 @@ import {
   Outlet,
 } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Header from './Header.jsx';
 import LoginPage from './loginPage/LoginPage.jsx';
 import NotFoundPage from './notFoundPage/NotFoundPage.jsx';
 import ChatPage from './chatPage/ChatPage.jsx';
@@ -15,6 +14,8 @@ import Registration from './signupPage/Registration.jsx';
 import routes from '../routes.js';
 import { useAuth } from '../hooks/index.js';
 import AuthProvider from '../api/AuthProvider.jsx';
+import Layout from "./Layout.jsx";
+import RequireAuth from "../api/RequireAuth.jsx";
 
 const PrivateOutlet = () => {
   const auth = useAuth();
@@ -24,17 +25,24 @@ const PrivateOutlet = () => {
 const App = () => (
   <AuthProvider>
     <Router>
-      <div className="d-flex flex-column h-100">
-        <Header />
         <Routes>
-          <Route path={routes.chatPagePath()} element={<PrivateOutlet />}>
-            <Route path="" element={<ChatPage />} />
+          <Route path={routes.chatPagePath()} element={<Layout />}>
+            <Route path={routes.chatPagePath()} element={<PrivateOutlet />}>
+              <Route path="" element={<ChatPage />} />
+            </Route>
+            <Route path={routes.signupPagePath()} element={
+              <RequireAuth>
+                <Registration />
+              </RequireAuth>
+            } />
+            <Route path={routes.loginPagePath()} element={
+              <RequireAuth>
+                <LoginPage />
+              </RequireAuth>
+            } />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
-          <Route path={routes.signupPagePath()} element={<Registration />} />
-          <Route path={routes.loginPagePath()} element={<LoginPage />} />
-          <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      </div>
     </Router>
     <ToastContainer />
   </AuthProvider>
