@@ -5,7 +5,7 @@ import {
   FormFloating, FormControl, FormLabel, Button,
 } from 'react-bootstrap';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../../hooks/index.js';
 import routes from '../../../routes.js';
@@ -128,9 +128,14 @@ const SignUpForm = () => {
           <Button variant="outline-primary" className="w-100 mb-3" type="submit">
             {t('registration_form.btn_register')}
           </Button>
-          <Button href="/" variant="primary" className="w-100 mb-3">
-            {t('login_page.btn_in')}
-          </Button>
+          <div className="p-4">
+            <div className="text-center">
+              <span>
+                {t('registration_form.already_login')}
+              </span>
+              <Link to={'/'}>{t('login_page.btn_in')}</Link>
+            </div>
+          </div>
         </Form>
       )}
     </Formik>

@@ -32,6 +32,7 @@ export default {
       password: 'Пароль',
       confirm_password: 'Подтвердите пароль',
       btn_register: 'Зарегистрироваться',
+      already_login: 'Уже есть аккаунт?'
     },
     registration_page: {
       avatar: 'avatar tota',

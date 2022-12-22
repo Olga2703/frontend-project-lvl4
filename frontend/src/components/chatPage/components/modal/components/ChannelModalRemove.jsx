@@ -4,7 +4,7 @@ import { Modal, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
-import { selectors, actions as channelActions } from '../../../../../slices/channelsSlice.js';
+import { selectors, actions as channelActions, getCurrentChannel } from '../../../../../slices/channelsSlice.js';
 import { actions as modalActions } from '../../../../../slices/modalsSlice.js';
 import { useChatAPI } from "../../../../../hooks";
 
@@ -16,14 +16,17 @@ const RemoveChannelModal = () => {
   const { extraData } = useSelector((state) => state.modals);
   const generalChannelId = useSelector(selectors.selectAll)
     .find((ch) => ch.name === 'general').id;
-  console.log(generalChannelId);
+  const currentChannel = useSelector(getCurrentChannel);
 
   const closeModal = () => dispatch(modalActions.closeModal());
 
+  console.log(extraData);
   const onRemove = () => {
     try {
       chatApi.removeChannel(extraData);
-      dispatch(channelActions.setCurrentChannelId(generalChannelId));
+      if (extraData.id === currentChannel.id) {
+        dispatch(channelActions.setCurrentChannelId(generalChannelId));
+      }
       toast.success(t('success_message.channel_deleted'));
     } catch (err) {
       toast.error(t('errors.errors_network'));
