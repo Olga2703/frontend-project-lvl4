@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import 'react-toastify/dist/ReactToastify.css';
+import './assets/application.scss';
 import init from './init.jsx';
 
 const mountNode = document.getElementById('root');

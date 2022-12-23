@@ -133,7 +133,7 @@ const SignUpForm = () => {
               <span>
                 {t('registration_form.already_login')}
               </span>
-              <Link to='/'>{t('login_page.btn_in')}</Link>
+              <Link to="/">{t('login_page.btn_in')}</Link>
             </div>
           </div>
         </Form>

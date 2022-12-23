@@ -13,6 +13,7 @@ const ChannelComponent = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const channels = useSelector(selectors.selectAll);
+  console.log(actions);
   const showAddingModal = () => dispatch(actions.openModal({ type: 'adding', extraData: null }));
 
   return (

@@ -27,7 +27,6 @@ export const ChannelDropdownButton = ({ channel }) => {
   const { t } = useTranslation();
   const showModal = (type) => () => dispatch(modalsActions.openModal({ type, channel }));
   const { currentChannelId } = useSelector((state) => state.channels);
-  // const currentChannelId = useSelector(getCurrentChannel);
   return (
     <Dropdown className="d-flex btn-group">
       <ChannelButton channel={channel} />

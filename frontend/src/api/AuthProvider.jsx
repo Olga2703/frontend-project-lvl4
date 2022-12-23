@@ -14,9 +14,9 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem('user');
     setUser(null);
   };
-  const getAuthHeader = () => user?.token
+  const getAuthHeader = () => (user?.token
     ? { Authorization: `Bearer ${user.token}` }
-    : {};
+    : {});
 
   return (
     <AuthContext.Provider

@@ -22,10 +22,14 @@ const PrivatePage = () => {
   }, []);
 
   const modalType = useSelector(getModalType);
+  if (loadingStatus === 'loading') {
+    return <div className="async-spinner"></div>
+  }
   if (loadingStatus === 'failed') {
     toast.error(t('errors.errors_network'));
     auth.logOut();
   }
+
   return (
     <div className="d-flex flex-column h-100">
       <Container className="h-100 my-4 overflow-hidden rounded shadow">

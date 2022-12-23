@@ -30,18 +30,20 @@ const App = () => (
           <Route path={routes.chatPagePath()} element={<PrivateOutlet />}>
             <Route path="" element={<ChatPage />} />
           </Route>
-          <Route path={routes.signupPagePath()}
+          <Route
+            path={routes.signupPagePath()}
             element={
-              <RequireAuth>
+              (<RequireAuth>
                 <Registration />
-              </RequireAuth>
+              </RequireAuth>)
             }
           />
-          <Route path={routes.loginPagePath()}
+          <Route
+            path={routes.loginPagePath()}
             element={
-              <RequireAuth>
+             ( <RequireAuth>
                 <LoginPage />
-              </RequireAuth>
+              </RequireAuth>)
             }
           />
           <Route path="*" element={<NotFoundPage />} />

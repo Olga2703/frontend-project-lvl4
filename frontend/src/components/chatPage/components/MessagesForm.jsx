@@ -10,7 +10,7 @@ import { useChatAPI } from '../../../hooks/index.js';
 
 const Messages = () => {
   const inputRef = useRef();
-  const chatApi = useChatAPI();''
+  const chatApi = useChatAPI();
   const { t } = useTranslation();
   useEffect(() => inputRef.current.focus());
   const channelId = useSelector((state) => state.channels.currentChannelId);
