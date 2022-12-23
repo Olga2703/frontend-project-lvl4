@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 import { selectors, actions as channelActions, getCurrentChannel } from '../../../../../slices/channelsSlice.js';
 import { actions as modalActions } from '../../../../../slices/modalsSlice.js';
-import { useChatAPI } from "../../../../../hooks";
+import { useChatAPI } from '../../../../../hooks';
 
 const RemoveChannelModal = () => {
   const chatApi = useChatAPI();

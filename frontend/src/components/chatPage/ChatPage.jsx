@@ -9,7 +9,7 @@ import { useAuth } from '../../hooks/index.js';
 import Modal from './components/modal/Modal.jsx';
 import ChannelComponent from './components/ChannelComponent.jsx';
 import MessageComponent from './components/MessagesComponent.jsx';
-import  { getModalType } from "../../slices/modalsSlice.js";
+import { getModalType } from '../../slices/modalsSlice.js';
 
 const PrivatePage = () => {
   const dispatch = useDispatch();

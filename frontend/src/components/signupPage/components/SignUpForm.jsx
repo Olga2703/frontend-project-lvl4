@@ -5,7 +5,7 @@ import {
   FormFloating, FormControl, FormLabel, Button,
 } from 'react-bootstrap';
 import axios from 'axios';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../../hooks/index.js';
 import routes from '../../../routes.js';
@@ -133,7 +133,7 @@ const SignUpForm = () => {
               <span>
                 {t('registration_form.already_login')}
               </span>
-              <Link to={'/'}>{t('login_page.btn_in')}</Link>
+              <Link to='/'>{t('login_page.btn_in')}</Link>
             </div>
           </div>
         </Form>

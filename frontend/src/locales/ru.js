@@ -23,7 +23,7 @@ export default {
         required_field: 'Обязательное поле',
         matching_passwords: 'Пароли должны совпадать',
         account_already_exists: 'Такой пользователь уже существует',
-        channel_already_exists: 'Канал с таким называнием уже существует'
+        channel_already_exists: 'Канал с таким называнием уже существует',
       },
     },
     registration_form: {
@@ -32,7 +32,7 @@ export default {
       password: 'Пароль',
       confirm_password: 'Подтвердите пароль',
       btn_register: 'Зарегистрироваться',
-      already_login: 'Уже есть аккаунт?'
+      already_login: 'Уже есть аккаунт?',
     },
     registration_page: {
       avatar: 'avatar tota',

@@ -8,7 +8,7 @@ import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import { selectors } from '../../../../../slices/channelsSlice.js';
 import { actions as modalsActions } from '../../../../../slices/modalsSlice.js';
-import { useChatAPI } from "../../../../../hooks/index.js";
+import { useChatAPI } from '../../../../../hooks/index.js';
 
 const ModalWindow = () => {
   const chatApi = useChatAPI();

@@ -14,8 +14,8 @@ import Registration from './signupPage/Registration.jsx';
 import routes from '../routes.js';
 import { useAuth } from '../hooks/index.js';
 import AuthProvider from '../api/AuthProvider.jsx';
-import Layout from "./Layout.jsx";
-import RequireAuth from "../api/RequireAuth.jsx";
+import Layout from './Layout.jsx';
+import RequireAuth from '../api/RequireAuth.jsx';
 
 const PrivateOutlet = () => {
   const auth = useAuth();
@@ -25,24 +25,28 @@ const PrivateOutlet = () => {
 const App = () => (
   <AuthProvider>
     <Router>
-        <Routes>
-          <Route path={routes.chatPagePath()} element={<Layout />}>
-            <Route path={routes.chatPagePath()} element={<PrivateOutlet />}>
-              <Route path="" element={<ChatPage />} />
-            </Route>
-            <Route path={routes.signupPagePath()} element={
+      <Routes>
+        <Route path={routes.chatPagePath()} element={<Layout />}>
+          <Route path={routes.chatPagePath()} element={<PrivateOutlet />}>
+            <Route path="" element={<ChatPage />} />
+          </Route>
+          <Route path={routes.signupPagePath()}
+            element={
               <RequireAuth>
                 <Registration />
               </RequireAuth>
-            } />
-            <Route path={routes.loginPagePath()} element={
+            }
+          />
+          <Route path={routes.loginPagePath()}
+            element={
               <RequireAuth>
                 <LoginPage />
               </RequireAuth>
-            } />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
+            }
+          />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
     </Router>
     <ToastContainer />
   </AuthProvider>

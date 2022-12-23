@@ -6,11 +6,11 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { useChatAPI } from "../../../hooks/index.js";
+import { useChatAPI } from '../../../hooks/index.js';
 
 const Messages = () => {
   const inputRef = useRef();
-  const chatApi = useChatAPI();
+  const chatApi = useChatAPI();''
   const { t } = useTranslation();
   useEffect(() => inputRef.current.focus());
   const channelId = useSelector((state) => state.channels.currentChannelId);
