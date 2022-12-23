@@ -33,17 +33,21 @@ const App = () => (
           <Route
             path={routes.signupPagePath()}
             element={
-              (<RequireAuth>
-                <Registration />
-              </RequireAuth>)
+              (
+                <RequireAuth>
+                  <Registration />
+                </RequireAuth>
+              )
             }
           />
           <Route
             path={routes.loginPagePath()}
             element={
-             ( <RequireAuth>
-                <LoginPage />
-              </RequireAuth>)
+             (
+               <RequireAuth>
+                 <LoginPage />
+               </RequireAuth>
+             )
             }
           />
           <Route path="*" element={<NotFoundPage />} />

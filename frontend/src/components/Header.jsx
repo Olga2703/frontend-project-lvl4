@@ -9,9 +9,11 @@ const Header = () => {
   const AuthButton = () => {
     const auth = useAuth();
     return auth.user
-      && (<Button href={routes.loginPagePath()} onClick={auth.logOut}>
-        {t('navbar.btn_out')}
-      </Button>);
+      && (
+          <Button href={routes.loginPagePath()} onClick={auth.logOut}>
+            {t('navbar.btn_out')}
+          </Button>
+      );
   };
   return (
     <Navbar bg="white" expand="lg" className="shadow-sm">
