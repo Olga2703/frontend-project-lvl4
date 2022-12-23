@@ -23,7 +23,7 @@ const PrivatePage = () => {
 
   const modalType = useSelector(getModalType);
   if (loadingStatus === 'loading') {
-    return <div className="async-spinner" />
+    return <div className="async-spinner" />;
   }
   if (loadingStatus === 'failed') {
     toast.error(t('errors.errors_network'));

@@ -10,9 +10,9 @@ const Header = () => {
     const auth = useAuth();
     return auth.user
       && (
-          <Button href={routes.loginPagePath()} onClick={auth.logOut}>
-            {t('navbar.btn_out')}
-          </Button>
+      <Button href={routes.loginPagePath()} onClick={auth.logOut}>
+        {t('navbar.btn_out')}
+      </Button>
       );
   };
   return (
