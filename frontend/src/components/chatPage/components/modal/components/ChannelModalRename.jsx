@@ -6,8 +6,8 @@ import { useFormik } from 'formik';
 
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
-import { selectors } from '../../../../../slices/channelsSlice.js';
-import { actions as modalsActions } from '../../../../../slices/modalsSlice.js';
+import { getChannelNames } from '../../../../../slices/channelsSlice.js';
+import { actions as modalsActions, getModal } from '../../../../../slices/modalsSlice.js';
 import { useChatAPI } from '../../../../../hooks/index.js';
 
 const ModalWindow = () => {
@@ -17,19 +17,10 @@ const ModalWindow = () => {
   const { t } = useTranslation();
   useEffect(() => inputRef.current.focus(), []);
 
-  const channelNames = useSelector(selectors.selectAll).map((channel) => channel.name);
+  const channelNames = useSelector(getChannelNames);
 
   const closeModal = () => dispatch(modalsActions.closeModal());
-  const { type, extraData } = useSelector((state) => state.modals);
-
-  const onAdd = (name) => {
-    try {
-      chatApi.addNewChannel({ removable: true, name });
-      toast.success(t('success_message.channel_created'));
-    } catch (err) {
-      toast.error(t('errors.errors_network'));
-    }
-  };
+  const { extraData } = useSelector(getModal);
 
   const onRename = (name) => {
     try {
@@ -40,9 +31,6 @@ const ModalWindow = () => {
     }
   };
 
-  const title = type === 'adding' ? t('modal.add_channel') : t('modal.rename_channel');
-  const handler = type === 'adding' ? onAdd : onRename;
-
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -50,11 +38,11 @@ const ModalWindow = () => {
     validationSchema: yup.object({
       name: yup
         .string()
-        .required(t('errors.validation.required_field'))
-        .notOneOf(channelNames, t('errors.validation.channel_already_exists')),
+        .required('errors.validation.required_field')
+        .notOneOf(channelNames, 'errors.validation.channel_already_exists'),
     }),
     onSubmit: ({ name }) => {
-      handler(name);
+      onRename(name);
       closeModal();
     },
   });
@@ -62,7 +50,7 @@ const ModalWindow = () => {
   return (
     <Modal show centered>
       <Modal.Header closeButton onHide={closeModal}>
-        <Modal.Title className="h4">{title}</Modal.Title>
+        <Modal.Title className="h4">{t('modal.rename_channel')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={formik.handleSubmit}>
@@ -80,7 +68,7 @@ const ModalWindow = () => {
               {t('modal.name_channel')}
             </Form.Label>
             {formik.touched.name && formik.errors.name ? (
-              <Form.Control.Feedback type="invalid">{formik.errors.name}</Form.Control.Feedback>
+              <Form.Control.Feedback type="invalid">{t(formik.errors.name)}</Form.Control.Feedback>
             ) : null}
             <div className="d-flex justify-content-end">
               <Button onClick={closeModal} type="button" variant="secondary" className="me-2">

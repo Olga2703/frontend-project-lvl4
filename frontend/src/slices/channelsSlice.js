@@ -43,6 +43,7 @@ const channelsSlice = createSlice({
       .addCase(fetchChannels.rejected, (state, action) => {
         state.loadingStatus = 'failed';
         state.error = action.error.code;
+        console.log(action.error.code);
       });
   },
 });
@@ -55,4 +56,5 @@ export const getCurrentChannel = (state) => {
   const currentChannel = selectors.selectById(state, selectChannelId);
   return currentChannel;
 };
+export const getChannelNames = (state) => selectors.selectAll(state).map((channel) => channel.name);
 export default channelsSlice.reducer;

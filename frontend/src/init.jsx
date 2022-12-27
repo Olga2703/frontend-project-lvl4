@@ -1,6 +1,5 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { io } from 'socket.io-client';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import i18n from 'i18next';
 import { Provider as ProviderRollbar, ErrorBoundary, LEVEL_WARN } from '@rollbar/react';
@@ -13,7 +12,7 @@ import { ApiContext } from './hooks/index.js';
 
 const ErrorBoundaryPage = () => <NotFoundPage />;
 
-const init = () => {
+const init = (socket) => {
   const rollbarConfig = {
     enabled: process.env.NODE_ENV === 'production',
     accessToken: process.env.REACT_APP_ROLLBAR_ACCESS_TOKEN,
@@ -43,13 +42,7 @@ const init = () => {
     },
   });
 
-  const socket = io();
   const chatApi = buildChatApi(socket);
-
-  chatApi.getNewMessage(store.dispatch);
-  chatApi.getNewChannel(store.dispatch);
-  chatApi.getRemoveChannel(store.dispatch);
-  chatApi.getRenameChannel((store.dispatch));
 
   return (
     <ProviderRollbar config={rollbarConfig}>

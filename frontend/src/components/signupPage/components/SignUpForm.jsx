@@ -35,13 +35,13 @@ const SignUpForm = () => {
       validationSchema={yup.object({
         username: yup
           .string()
-          .min(3, t('errors.validation.username_length'))
-          .max(20, t('errors.validation.username_length'))
-          .required(t('errors.validation.required_field')),
+          .min(3, 'errors.validation.username_length')
+          .max(20, 'errors.validation.username_length')
+          .required('errors.validation.required_field'),
         password: yup
           .string()
-          .min(6, t('errors.validation.password_length'))
-          .required(t('errors.validation.required_field')),
+          .min(6, 'errors.validation.password_length')
+          .required('errors.validation.required_field'),
       })}
       onSubmit={({ username, password }, actions) => {
         axios
@@ -80,7 +80,7 @@ const SignUpForm = () => {
             <FormLabel htmlFor="username">{t('registration_form.username')}</FormLabel>
             {errors.username && (
               <div className="invalid-tooltip" placement="right">
-                {errors.username}
+                {t(errors.username)}
               </div>
             )}
           </FormFloating>
@@ -100,7 +100,7 @@ const SignUpForm = () => {
             </FormLabel>
             {errors.password && (
               <div className="invalid-tooltip" placement="right">
-                {errors.password}
+                {t(errors.password)}
               </div>
             )}
           </FormFloating>

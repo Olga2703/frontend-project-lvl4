@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
 import { selectors, actions as channelActions, getCurrentChannel } from '../../../../../slices/channelsSlice.js';
-import { actions as modalActions } from '../../../../../slices/modalsSlice.js';
+import { actions as modalActions, getModal } from '../../../../../slices/modalsSlice.js';
 import { useChatAPI } from '../../../../../hooks';
 
 const RemoveChannelModal = () => {
@@ -13,14 +13,13 @@ const RemoveChannelModal = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const { extraData } = useSelector((state) => state.modals);
+  const { extraData } = useSelector(getModal);
   const generalChannelId = useSelector(selectors.selectAll)
     .find((ch) => ch.name === 'general').id;
   const currentChannel = useSelector(getCurrentChannel);
 
   const closeModal = () => dispatch(modalActions.closeModal());
 
-  console.log(extraData);
   const onRemove = () => {
     try {
       chatApi.removeChannel(extraData);
