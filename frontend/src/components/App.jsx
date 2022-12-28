@@ -15,7 +15,7 @@ import routes from '../routes.js';
 import { useAuth } from '../hooks/index.js';
 import AuthProvider from '../api/AuthProvider.jsx';
 import Layout from './Layout.jsx';
-import RequireAuth from '../api/RequireAuth.jsx';
+import PrivateRout from '../api/PrivateRout.jsx';
 
 const PrivateOutlet = () => {
   const auth = useAuth();
@@ -34,9 +34,9 @@ const App = () => (
             path={routes.signupPagePath()}
             element={
               (
-                <RequireAuth>
+                <PrivateRout>
                   <Registration />
-                </RequireAuth>
+                </PrivateRout>
               )
             }
           />
@@ -44,9 +44,9 @@ const App = () => (
             path={routes.loginPagePath()}
             element={
              (
-               <RequireAuth>
+               <PrivateRout>
                  <LoginPage />
-               </RequireAuth>
+               </PrivateRout>
              )
             }
           />
