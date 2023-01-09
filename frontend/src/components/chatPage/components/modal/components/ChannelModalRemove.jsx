@@ -7,7 +7,6 @@ import { toast } from 'react-toastify';
 import { actions as channelActions, getCurrentChannel,DEFAULT_CHANNEL_ID } from '../../../../../slices/channelsSlice.js';
 import { actions as modalActions, getModal } from '../../../../../slices/modalsSlice.js';
 import { useChatAPI } from '../../../../../hooks';
-// import { DEFAULT_CHANNEL_ID } from '../../../../../slices/channelsSlice.js';
 
 const RemoveChannelModal = () => {
   const chatApi = useChatAPI();
@@ -33,7 +32,7 @@ const RemoveChannelModal = () => {
   };
 
   return (
-    <Modal show centered>
+    <>
       <Modal.Header closeButton onHide={closeModal}>
         <Modal.Title className="h4">{t('modal.title')}</Modal.Title>
       </Modal.Header>
@@ -44,7 +43,7 @@ const RemoveChannelModal = () => {
           <Button onClick={onRemove} variant="danger">{t('modal.remove')}</Button>
         </div>
       </Modal.Body>
-    </Modal>
+    </>
   );
 };
 

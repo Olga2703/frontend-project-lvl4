@@ -48,7 +48,7 @@ const ModalWindow = () => {
   });
 
   return (
-    <Modal show centered>
+    <>
       <Modal.Header closeButton onHide={closeModal}>
         <Modal.Title className="h4">{t('modal.rename_channel')}</Modal.Title>
       </Modal.Header>
@@ -79,7 +79,7 @@ const ModalWindow = () => {
           </div>
         </Form>
       </Modal.Body>
-    </Modal>
+    </>
   );
 };
 

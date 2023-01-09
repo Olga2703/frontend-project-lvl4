@@ -6,7 +6,6 @@ import routes from '../routes.js';
 export const DEFAULT_CHANNEL_ID = '1';
 export const fetchChannels = createAsyncThunk('channels/fetchChannels', async (header) => {
   const response = await axios.get(routes.dataPath(), { headers: header });
-  console.log(response);
   return response.data;
 });
 
@@ -45,7 +44,6 @@ const channelsSlice = createSlice({
       .addCase(fetchChannels.rejected, (state, action) => {
         state.loadingStatus = 'failed';
         state.error = action.error.code;
-        console.log(state.error);
       });
   },
 });
