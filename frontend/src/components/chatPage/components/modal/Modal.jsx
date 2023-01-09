@@ -12,10 +12,10 @@ const Modal = () => {
   const type = useSelector(getModalType);
   const isOpened = useSelector(getModalShow);
   const modalCases = {
-    'adding': ChannelModalAdd,
-    'rename': ChannelModal,
-    'remove': ChannelModalRemove,
-  }
+    adding: ChannelModalAdd,
+    rename: ChannelModal,
+    remove: ChannelModalRemove,
+  };
   const Component = modalCases[type];
   return (
     <BootstrapModal show={isOpened} centered>

@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
-import { selectors } from "../../../../../slices/channelsSlice.js";
+import { selectors } from '../../../../../slices/channelsSlice.js';
 import { actions as modalsActions } from '../../../../../slices/modalsSlice.js';
-import { useChatAPI } from "../../../../../hooks";
+import { useChatAPI } from '../../../../../hooks';
 
 const ChannelModalAdd = () => {
   const chatApi = useChatAPI();
@@ -46,38 +46,38 @@ const ChannelModalAdd = () => {
   });
 
   return (
-      <>
-        <Modal.Header closeButton onHide={closeModal}>
-          <Modal.Title className="h4">{t('modal.add_channel')}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form onSubmit={formik.handleSubmit}>
-            <div>
-              <Form.Control
-                isInvalid={formik.touched.name && formik.errors.name}
-                ref={inputRef}
-                onChange={formik.handleChange}
-                className="mb-2"
-                name="name"
-                id="name"
-                value={formik.values.name}
-              />
-              <Form.Label className="visually-hidden" htmlFor="name">
-                {t('modal.name_channel')}
-              </Form.Label>
-              {formik.touched.name && formik.errors.name ? (
-                <Form.Control.Feedback type="invalid">{t(formik.errors.name)}</Form.Control.Feedback>
-              ) : null}
-              <div className="d-flex justify-content-end">
-                <Button onClick={closeModal} type="button" variant="secondary" className="me-2">
-                  {t('modal.cancel')}
-                </Button>
-                <Button type="submit">{t('modal.send')}</Button>
-              </div>
+    <>
+      <Modal.Header closeButton onHide={closeModal}>
+        <Modal.Title className="h4">{t('modal.add_channel')}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form onSubmit={formik.handleSubmit}>
+          <div>
+            <Form.Control
+              isInvalid={formik.touched.name && formik.errors.name}
+              ref={inputRef}
+              onChange={formik.handleChange}
+              className="mb-2"
+              name="name"
+              id="name"
+              value={formik.values.name}
+            />
+            <Form.Label className="visually-hidden" htmlFor="name">
+              {t('modal.name_channel')}
+            </Form.Label>
+            {formik.touched.name && formik.errors.name ? (
+              <Form.Control.Feedback type="invalid">{t(formik.errors.name)}</Form.Control.Feedback>
+            ) : null}
+            <div className="d-flex justify-content-end">
+              <Button onClick={closeModal} type="button" variant="secondary" className="me-2">
+                {t('modal.cancel')}
+              </Button>
+              <Button type="submit">{t('modal.send')}</Button>
             </div>
-          </Form>
-        </Modal.Body>
-      </>
+          </div>
+        </Form>
+      </Modal.Body>
+    </>
   );
 };
 

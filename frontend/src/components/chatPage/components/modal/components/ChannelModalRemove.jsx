@@ -4,7 +4,7 @@ import { Modal, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
-import { actions as channelActions, getCurrentChannel,DEFAULT_CHANNEL_ID } from '../../../../../slices/channelsSlice.js';
+import { actions as channelActions, getCurrentChannel, DEFAULT_CHANNEL_ID } from '../../../../../slices/channelsSlice.js';
 import { actions as modalActions, getModal } from '../../../../../slices/modalsSlice.js';
 import { useChatAPI } from '../../../../../hooks';
 

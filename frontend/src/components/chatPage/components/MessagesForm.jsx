@@ -10,7 +10,6 @@ import { useTranslation } from 'react-i18next';
 import { useChatAPI, useAuth } from '../../../hooks/index.js';
 import { getCurrentChannel } from '../../../slices/channelsSlice.js';
 
-
 const Messages = () => {
   filter.add(filter.getDictionary('ru'));
   filter.add(filter.getDictionary('en'));
