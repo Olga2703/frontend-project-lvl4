@@ -2,14 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import * as filter from 'leo-profanity';
 import { getCurrentChannelsMessages } from '../../../slices/messagesSlice.js';
 import { getCurrentChannel } from '../../../slices/channelsSlice.js';
 import MessagesForm from './MessagesForm.jsx';
 
 const MessagesComponent = () => {
-  filter.add(filter.getDictionary('ru'));
-  filter.add(filter.getDictionary('en'));
   const { t } = useTranslation();
   const currentChannel = useSelector(getCurrentChannel);
   const currentMessages = useSelector(getCurrentChannelsMessages);
@@ -43,7 +40,7 @@ const MessagesComponent = () => {
               <div key={message.id} className="text-break mb-2">
                 <b>{message.username}</b>
                 <span>: </span>
-                {filter.clean(message.body)}
+                {message.body}
               </div>
             ))}
             <div ref={messagesEndRef} />

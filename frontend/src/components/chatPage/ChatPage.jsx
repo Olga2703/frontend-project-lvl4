@@ -4,7 +4,7 @@ import { Container, Row } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { fetchChannels, selectorStatus } from '../../slices/channelsSlice.js';
+import { fetchChannels, selectorStatus, selectorErr } from '../../slices/channelsSlice.js';
 import { useAuth } from '../../hooks/index.js';
 import Modal from './components/modal/Modal.jsx';
 import ChannelComponent from './components/ChannelComponent.jsx';
@@ -17,6 +17,7 @@ const PrivatePage = () => {
   const { t } = useTranslation();
   const header = auth.getAuthHeader();
   const loadingStatus = useSelector(selectorStatus);
+  const errCode = useSelector(selectorErr);
   useEffect(() => {
     dispatch(fetchChannels(header));
   }, []);
@@ -25,7 +26,7 @@ const PrivatePage = () => {
   if (loadingStatus === 'loading') {
     return <div className="async-spinner" />;
   }
-  if (loadingStatus === 'failed') {
+  if (errCode === 'ERR_BAD_REQUEST') {
     toast.error(t('errors.errors_network'));
     auth.logOut();
   }

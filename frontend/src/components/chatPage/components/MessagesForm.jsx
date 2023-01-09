@@ -4,16 +4,22 @@ import React, { useEffect, useRef } from 'react';
 import { Button } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import * as filter from 'leo-profanity';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { useChatAPI } from '../../../hooks/index.js';
+import { useChatAPI, useAuth } from '../../../hooks/index.js';
+import { getCurrentChannel } from '../../../slices/channelsSlice.js';
+
 
 const Messages = () => {
+  filter.add(filter.getDictionary('ru'));
+  filter.add(filter.getDictionary('en'));
   const inputRef = useRef();
   const chatApi = useChatAPI();
+  const auth = useAuth();
   const { t } = useTranslation();
   useEffect(() => inputRef.current.focus());
-  const channelId = useSelector((state) => state.channels.currentChannelId);
+  const channelId = useSelector(getCurrentChannel).id;
   return (
     <Formik
       initialValues={{
@@ -27,8 +33,9 @@ const Messages = () => {
           .required('required'),
       })}
       onSubmit={(values, actions) => {
-        const { username } = JSON.parse(localStorage.getItem('user'));
-        const message = { ...values, channelId, username };
+        const { username } = auth.user;
+        const cleanValues = filter.clean(values.body);
+        const message = { body: cleanValues, channelId, username };
         try {
           chatApi.sendMessage(message);
         } catch (err) {

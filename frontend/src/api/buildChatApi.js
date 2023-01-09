@@ -13,6 +13,8 @@ const buildChatApi = (socket) => {
 
   const addNewChannel = (newChannel) => {
     socket.emit('newChannel', newChannel, (response) => {
+      store.dispatch(channelActions.addChannel(response.data));
+      store.dispatch(channelActions.setCurrentChannelId(response.data.id));
       if (response.status !== 'ok') {
         throw new Error('Network error: channel adding failed');
       }
@@ -35,10 +37,7 @@ const buildChatApi = (socket) => {
   };
 
   socket.on('newMessage', (response) => store.dispatch(messagesActions.addMessage(response)));
-  socket.on('newChannel', (response) => {
-    store.dispatch(channelActions.addChannel(response));
-    store.dispatch(channelActions.setCurrentChannelId(response));
-  });
+  socket.on('newChannel', () => {});
   socket.on('removeChannel', (response) => store.dispatch(channelActions.removeChannel(response.id)));
   socket.on('renameChannel', ({ id, name }) => store.dispatch(channelActions.updateChannel({ id, changes: { name } })));
 

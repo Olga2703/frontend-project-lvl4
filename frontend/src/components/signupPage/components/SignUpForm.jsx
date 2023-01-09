@@ -47,8 +47,6 @@ const SignUpForm = () => {
         axios
           .post(routes.signupPath(), { username, password })
           .then(({ data }) => {
-            localStorage.setItem('user', JSON.stringify(data));
-            console.log(data);
             logIn(data);
             navigate(routes.chatPagePath());
           })
