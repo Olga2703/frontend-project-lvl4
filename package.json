@@ -24,5 +24,8 @@
   "homepage": "https://github.com/Olga2703/frontend-project-lvl4#readme",
   "dependencies": {
     "@hexlet/chat-server": "^1.1.6"
+  },
+  "devDependencies": {
+    "prettier": "2.8.2"
   }
 }
