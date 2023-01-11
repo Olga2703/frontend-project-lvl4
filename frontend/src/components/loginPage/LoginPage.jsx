@@ -102,7 +102,8 @@ const LoginPage = () => {
             <div className="card-footer p-4">
               <div className="text-center">
                 <span>
-                  {t('login_page.no_account')}{' '}
+                  {t('login_page.no_account')}
+                  {' '}
                 </span>
                 <Link to={routes.signupPagePath()}>{t('login_page.registration')}</Link>
               </div>
