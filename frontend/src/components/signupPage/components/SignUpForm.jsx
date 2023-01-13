@@ -60,7 +60,7 @@ const SignUpForm = () => {
           });
       }}
     >
-      {({ errors, values }) => (
+      {({ errors, values, isSubmitting, isValid }) => (
         <Form className="w-50">
           <h1 className="text-center mb-4">{t('registration_form.header')}</h1>
           <FormFloating className="mb-3">
@@ -123,7 +123,7 @@ const SignUpForm = () => {
               </div>
             )}
           </FormFloating>
-          <Button variant="outline-primary" className="w-100 mb-3" type="submit">
+          <Button variant="outline-primary" className="w-100 mb-3" type="submit" disabled={!isValid || isSubmitting}>
             {t('registration_form.btn_register')}
           </Button>
           <div className="p-4">
