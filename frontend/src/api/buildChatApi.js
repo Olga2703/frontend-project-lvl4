@@ -13,6 +13,10 @@ const buildChatApi = (socket) => {
 
   const addNewChannel = (newChannel) => {
     socket.emit('newChannel', newChannel, (response) => {
+      if (response.status === 'ok') {
+        store.dispatch(channelActions.addChannel(response.data));
+        store.dispatch(channelActions.setCurrentChannelId(response.data.id));
+      }
       if (response.status !== 'ok') {
         throw new Error('Network error: channel adding failed');
       }
