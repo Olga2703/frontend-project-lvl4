@@ -123,7 +123,7 @@ const SignUpForm = () => {
               </div>
             )}
           </FormFloating>
-          <Button variant="outline-primary" className="w-100 mb-3" type="submit" disabled={!isValid || isSubmitting}>
+          <Button variant="outline-primary" className="w-100 mb-3" type="submit" disabled={isSubmitting}>
             {t('registration_form.btn_register')}
           </Button>
           <div className="p-4">

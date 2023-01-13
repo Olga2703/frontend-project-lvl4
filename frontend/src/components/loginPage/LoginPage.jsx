@@ -94,7 +94,7 @@ const LoginPage = () => {
                     </Form.Control.Feedback>
                   )}
                 </Form.Group>
-                <Button type="submit" variant="outline-primary" className="w-100 mb-3" disabled={!formik.isValid || formik.isSubmitting}>
+                <Button type="submit" variant="outline-primary" className="w-100 mb-3" disabled={formik.isSubmitting}>
                   {t('login_page.btn_in')}
                 </Button>
               </Form>
