@@ -60,7 +60,7 @@ const SignUpForm = () => {
           });
       }}
     >
-      {({ errors, values, isSubmitting, isValid }) => (
+      {({ errors, values, isSubmitting }) => (
         <Form className="w-50">
           <h1 className="text-center mb-4">{t('registration_form.header')}</h1>
           <FormFloating className="mb-3">

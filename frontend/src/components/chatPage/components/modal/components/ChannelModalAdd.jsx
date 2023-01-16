@@ -7,7 +7,7 @@ import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import { selectors } from '../../../../../slices/channelsSlice.js';
 import { actions as modalsActions } from '../../../../../slices/modalsSlice.js';
-import { useChatAPI } from "../../../../../hooks";
+import { useChatAPI } from '../../../../../hooks';
 
 const ChannelModalAdd = () => {
   const chatApi = useChatAPI();
